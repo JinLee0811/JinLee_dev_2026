@@ -21,54 +21,83 @@ interface CertificationItem {
 const education: EducationItem[] = [
   {
     id: 1,
-    institution: "Korea University",
-    degree: "B.S.",
-    major: "Computer Science",
-    period: "2015.03 - 2019.02",
-    description: "Focused on software engineering and web development.",
+    institution: "University of Technology Sydney (UTS)",
+    degree: "Master of Information Technology",
+    major: "",
+    period: "Feb 2024 – Dec 2025",
+    description: "",
     achievements: [
-      "GPA 4.2/4.5",
-      "Selected for an outstanding capstone project",
-      "Led the Algorithms Study Club",
+      "WAM 90.50",
+      "Dean’s List (2024–2025)",
     ],
   },
   {
     id: 2,
-    institution: "Fast Campus",
-    degree: "Bootcamp",
-    major: "Full Stack Web Development",
-    period: "2019.03 - 2019.08",
-    description: "Intensive, project-based learning program.",
-    achievements: [
-      "Completed a 6-month immersive course",
-      "Awarded best team project",
-      "Participated in hiring-linked program",
-    ],
+    institution: "Dankook University, South Korea",
+    degree: "Bachelor of Science",
+    major: "Animal Resources",
+    period: "Mar 2013 – Feb 2020",
+    description: "",
   },
 ];
 
 const certifications: CertificationItem[] = [
   {
     id: 1,
-    name: "AWS Certified Solutions Architect - Associate",
+    name: "AWS Certified DevOps Engineer – Professional",
     issuer: "Amazon Web Services",
-    date: "2024.01",
-  },
-  {
-    id: 2,
-    name: "Engineer Information Processing",
-    issuer: "HRD Korea",
-    date: "2023.06",
-  },
-  {
-    id: 3,
-    name: "SQL Developer (SQLD)",
-    issuer: "Korea Data Agency",
-    date: "2022.09",
+    date: "Jun 2024 – Jun 2027",
   },
 ];
 
 export function Education() {
+  const skillLogos = [
+    {
+      label: "React",
+      icon: "https://cdn.simpleicons.org/react/FFFFFF",
+    },
+    {
+      label: "TypeScript",
+      icon: "https://cdn.simpleicons.org/typescript/FFFFFF",
+    },
+    {
+      label: "Next.js",
+      icon: "https://cdn.simpleicons.org/nextdotjs/FFFFFF",
+    },
+    {
+      label: "Node.js",
+      icon: "https://cdn.simpleicons.org/nodedotjs/FFFFFF",
+    },
+    {
+      label: "Express",
+      icon: "https://cdn.simpleicons.org/express/FFFFFF",
+    },
+    {
+      label: "NestJS",
+      icon: "https://cdn.simpleicons.org/nestjs/FFFFFF",
+    },
+    {
+      label: "PostgreSQL",
+      icon: "https://cdn.simpleicons.org/postgresql/FFFFFF",
+    },
+    {
+      label: "MongoDB",
+      icon: "https://cdn.simpleicons.org/mongodb/FFFFFF",
+    },
+    {
+      label: "Docker",
+      icon: "https://cdn.simpleicons.org/docker/FFFFFF",
+    },
+    {
+      label: "AWS",
+      icon: "https://cdn.simpleicons.org/amazonaws/FFFFFF",
+    },
+    {
+      label: "GitHub Actions",
+      icon: "https://cdn.simpleicons.org/githubactions/FFFFFF",
+    },
+  ];
+
   return (
     <section className="py-20 bg-slate-50">
       <div className="container mx-auto px-6">
@@ -97,7 +126,7 @@ export function Education() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-6"
             >
-              <div className="p-3 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl">
+              <div className="p-3 bg-linear-to-br from-purple-500 to-blue-500 rounded-xl">
                 <GraduationCap className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900">Education</h3>
@@ -119,15 +148,16 @@ export function Education() {
                         {edu.institution}
                       </h4>
                       <p className="text-purple-600 font-semibold">
-                        {edu.degree} • {edu.major}
+                        {edu.degree}
+                        {edu.major ? ` • ${edu.major}` : ""}
                       </p>
                     </div>
-                    <span className="text-sm text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+                    <span className="text-sm text-slate-500 bg-slate-100 px-4 py-1 rounded-full whitespace-nowrap">
                       {edu.period}
                     </span>
                   </div>
                   <p className="text-slate-600 mb-3">{edu.description}</p>
-                  {edu.achievements && (
+                  {edu.achievements && edu.achievements.length > 0 && (
                     <ul className="space-y-1">
                       {edu.achievements.map((achievement, i) => (
                         <li
@@ -153,7 +183,7 @@ export function Education() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-6"
             >
-              <div className="p-3 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl">
+              <div className="p-3 bg-linear-to-br from-blue-500 to-cyan-500 rounded-xl">
                 <Award className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900">
@@ -196,26 +226,26 @@ export function Education() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-8 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl p-6 text-white"
+              className="mt-8 bg-linear-to-br from-purple-500 to-blue-500 rounded-xl p-6 text-white"
             >
               <h4 className="font-bold text-lg mb-3">Skills Summary</h4>
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <p className="text-sm text-purple-100 mb-2">Frontend</p>
-                  <p className="text-sm">React, TypeScript, Next.js</p>
-                </div>
-                <div>
-                  <p className="text-sm text-purple-100 mb-2">Backend</p>
-                  <p className="text-sm">Node.js, Express, NestJS</p>
-                </div>
-                <div>
-                  <p className="text-sm text-purple-100 mb-2">Database</p>
-                  <p className="text-sm">PostgreSQL, MongoDB</p>
-                </div>
-                <div>
-                  <p className="text-sm text-purple-100 mb-2">DevOps</p>
-                  <p className="text-sm">Docker, AWS, CI/CD</p>
-                </div>
+              <div className="flex flex-wrap items-center gap-3">
+                {skillLogos.map((skill) => (
+                  <div
+                    key={skill.label}
+                    className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2"
+                  >
+                    <img
+                      src={skill.icon}
+                      alt={`${skill.label} logo`}
+                      className="h-5 w-5"
+                      loading="lazy"
+                    />
+                    <span className="text-xs text-purple-100">
+                      {skill.label}
+                    </span>
+                  </div>
+                ))}
               </div>
             </motion.div>
           </div>

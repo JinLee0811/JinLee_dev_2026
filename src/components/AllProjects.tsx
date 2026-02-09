@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { motion } from "motion/react";
 import { useState } from "react";
-import type { ReactNode } from "react";
 import {
   ExternalLink,
   Github,
@@ -15,134 +15,29 @@ import {
   Globe,
   Database,
 } from "lucide-react";
+import { projects } from "@/data/projects";
 
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  liveUrl: string;
-  githubUrl: string;
-  category: string;
-  year: string;
-  icon: ReactNode;
-}
-
-const allProjects: Project[] = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    description: "A scalable commerce platform with real-time inventory.",
-    image:
-      "https://images.unsplash.com/photo-1694599048261-a1de00f0117e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["React", "Node.js", "PostgreSQL", "Stripe", "AWS", "Redis"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    category: "Full Stack",
-    year: "2025",
-    icon: <ShoppingCart className="w-5 h-5" />,
-  },
-  {
-    id: 2,
-    title: "Real-time Collaboration Suite",
-    description: "CRDT-powered editing with video calls and presence.",
-    image:
-      "https://images.unsplash.com/photo-1649451844931-57e22fc82de3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["Next.js", "WebSocket", "WebRTC", "MongoDB", "Docker"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    category: "Full Stack",
-    year: "2025",
-    icon: <MessageSquare className="w-5 h-5" />,
-  },
-  {
-    id: 3,
-    title: "AI Analytics Dashboard",
-    description: "Machine learning insights with interactive data visuals.",
-    image:
-      "https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["React", "Python", "TensorFlow", "D3.js", "FastAPI"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    category: "Data & AI",
-    year: "2024",
-    icon: <BarChart className="w-5 h-5" />,
-  },
-  {
-    id: 4,
-    title: "Mobile Fitness App",
-    description: "Cross-platform health app with wearable integrations.",
-    image:
-      "https://images.unsplash.com/photo-1595234235838-2fc8984bc651?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["React Native", "Firebase", "Redux", "HealthKit"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    category: "Mobile",
-    year: "2024",
-    icon: <Smartphone className="w-5 h-5" />,
-  },
-  {
-    id: 5,
-    title: "Developer Community",
-    description: "A Q&A platform for engineers with realtime updates.",
-    image:
-      "https://images.unsplash.com/photo-1561886362-a2b38ce83470?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["Next.js", "Prisma", "tRPC", "TailwindCSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    category: "Full Stack",
-    year: "2024",
-    icon: <Code2 className="w-5 h-5" />,
-  },
-  {
-    id: 6,
-    title: "Real-time Chat Infrastructure",
-    description: "Scalable chat services with Kafka and gRPC.",
-    image:
-      "https://images.unsplash.com/photo-1588690154757-badf4644190f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["Go", "gRPC", "Kafka", "Kubernetes", "Redis"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    category: "Backend",
-    year: "2024",
-    icon: <Zap className="w-5 h-5" />,
-  },
-  {
-    id: 7,
-    title: "Portfolio Builder",
-    description: "Drag-and-drop portfolio creator for creatives.",
-    image:
-      "https://images.unsplash.com/photo-1582192904915-d89c7250b235?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["React", "DnD Kit", "Supabase", "Vercel"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    category: "Frontend",
-    year: "2023",
-    icon: <Globe className="w-5 h-5" />,
-  },
-  {
-    id: 8,
-    title: "GraphQL API Platform",
-    description: "Composable backend services with GraphQL and Apollo.",
-    image:
-      "https://images.unsplash.com/photo-1649451844931-57e22fc82de3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    tags: ["GraphQL", "Apollo", "PostgreSQL", "Docker"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    category: "Backend",
-    year: "2023",
-    icon: <Database className="w-5 h-5" />,
-  },
+const categories = [
+  "All",
+  ...Array.from(new Set(projects.map((project) => project.category))),
 ];
 
-const categories = ["All", "Full Stack", "Frontend", "Backend", "Mobile", "Data & AI"];
+const categoryIcons: Record<string, React.ReactNode> = {
+  Personal: <ShoppingCart className="w-5 h-5" />,
+  "Team Projects": <MessageSquare className="w-5 h-5" />,
+  Freelance: <Globe className="w-5 h-5" />,
+  "Data & AI": <BarChart className="w-5 h-5" />,
+  "AI/ML": <BarChart className="w-5 h-5" />,
+  Backend: <Zap className="w-5 h-5" />,
+  Frontend: <Code2 className="w-5 h-5" />,
+  Mobile: <Smartphone className="w-5 h-5" />,
+};
 
 export function AllProjects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProjects = allProjects.filter((project) => {
+  const filteredProjects = projects.filter((project) => {
     const matchesCategory =
       selectedCategory === "All" || project.category === selectedCategory;
     const matchesSearch =
@@ -164,12 +59,12 @@ export function AllProjects() {
           className="mb-16"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
               All Projects
             </span>
           </h1>
           <p className="text-xl text-slate-400 max-w-2xl">
-            Explore {allProjects.length} projects across product, data, and
+            Explore {projects.length} projects across product, data, and
             platform engineering.
           </p>
         </motion.div>
@@ -199,7 +94,7 @@ export function AllProjects() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full font-medium transition-all ${
                   selectedCategory === category
-                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/30"
+                    ? "bg-linear-to-r from-purple-600 to-blue-600 text-white shadow-lg shadow-purple-500/30"
                     : "bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10"
                 }`}
                 whileHover={{ scale: 1.05 }}
@@ -236,39 +131,45 @@ export function AllProjects() {
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-slate-950 to-transparent" />
 
                   <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
                     <span className="text-xs font-semibold text-slate-900">
-                      {project.year}
+                      {project.date}
                     </span>
                   </div>
 
                   <div className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-lg">
-                    {project.icon}
+                    {categoryIcons[project.category] || (
+                      <Database className="w-5 h-5" />
+                    )}
                   </div>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 to-blue-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                    <motion.a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white rounded-full"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <ExternalLink className="w-5 h-5 text-slate-900" />
-                    </motion.a>
-                    <motion.a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white rounded-full"
-                      whileHover={{ scale: 1.1, rotate: -5 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <Github className="w-5 h-5 text-slate-900" />
-                    </motion.a>
+                  <div className="absolute inset-0 bg-linear-to-t from-purple-900/90 to-blue-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                    {project.liveUrl && (
+                      <motion.a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white rounded-full"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <ExternalLink className="w-5 h-5 text-slate-900" />
+                      </motion.a>
+                    )}
+                    {project.githubUrl && (
+                      <motion.a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white rounded-full"
+                        whileHover={{ scale: 1.1, rotate: -5 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Github className="w-5 h-5 text-slate-900" />
+                      </motion.a>
+                    )}
                   </div>
                 </div>
 
@@ -301,6 +202,24 @@ export function AllProjects() {
                       </span>
                     )}
                   </div>
+                  {project.slug && (
+                    <div className="mt-4">
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        onClick={() => {
+                          if (typeof window !== "undefined") {
+                            window.sessionStorage.setItem(
+                              "projects:return",
+                              `${window.location.pathname}${window.location.search}`
+                            );
+                          }
+                        }}
+                        className="inline-flex items-center gap-2 text-sm text-purple-300 hover:text-purple-200"
+                      >
+                        <span>View details</span>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>

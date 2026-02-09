@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { useMemo, useEffect, useState } from "react";
-import { Github, Linkedin, Mail, ArrowDown, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, ArrowDown, Sparkles } from "lucide-react";
 
 const socialLinks = [
   {
@@ -19,14 +19,20 @@ const socialLinks = [
     href: "mailto:jinlee.engineer@gmail.com",
     gradientClass: "from-cyan-500 to-cyan-600",
   },
+  {
+    Icon: FileText,
+    href: "https://docs.google.com/document/d/1kNtBOncHUM6n4OWfZKeex-dorXs-CgUPRkM03NQU9cY/edit?usp=sharing",
+    gradientClass: "from-emerald-500 to-teal-500",
+  },
 ];
 
 export function AnimatedHero() {
+  const [hasMounted, setHasMounted] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   const particles = useMemo(
     () =>
-      Array.from({ length: 50 }, (_, index) => ({
+      Array.from({ length: 90 }, (_, index) => ({
         id: index,
         x: Math.random(),
         y: Math.random(),
@@ -37,25 +43,50 @@ export function AnimatedHero() {
     [],
   );
 
-  const shootingStars = useMemo(
-    () =>
-      Array.from({ length: 6 }, (_, index) => ({
-        id: index,
-        x: Math.random(),
-        y: Math.random(),
-        delay: Math.random() * 6,
-        duration: Math.random() * 2 + 2.5,
-      })),
-    [],
-  );
+  const [shootingStars, setShootingStars] = useState<
+    {
+      id: number;
+      x: number;
+      y: number;
+      delay: number;
+      duration: number;
+      driftX: number;
+      driftY: number;
+    }[]
+  >([]);
 
   useEffect(() => {
+    setHasMounted(true);
     const updateSize = () =>
       setDimensions({ width: window.innerWidth, height: window.innerHeight });
     updateSize();
     window.addEventListener("resize", updateSize);
     return () => window.removeEventListener("resize", updateSize);
   }, []);
+
+  useEffect(() => {
+    if (!hasMounted) {
+      return;
+    }
+
+    const generateStars = () =>
+      Array.from({ length: 3 }, (_, index) => ({
+        id: index,
+        x: Math.random(),
+        y: Math.random(),
+        delay: Math.random() * 6,
+        duration: Math.random() * 3 + 5,
+        driftX: Math.random() * 400 + 240,
+        driftY: Math.random() * 300 + 200,
+      }));
+
+    setShootingStars(generateStars());
+    const interval = window.setInterval(() => {
+      setShootingStars(generateStars());
+    }, 12000);
+
+    return () => window.clearInterval(interval);
+  }, [hasMounted]);
 
   const width = dimensions.width || 1200;
   const height = dimensions.height || 800;
@@ -72,43 +103,49 @@ export function AnimatedHero() {
       </div>
 
       <div className='absolute inset-0 overflow-hidden'>
-        {particles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className='absolute rounded-full bg-white'
-            initial={{
-              x: particle.x * width,
-              y: particle.y * height,
-              opacity: particle.opacity,
-            }}
-            animate={{
-              y: [null, Math.random() * height],
-              opacity: [null, 0, particle.opacity],
-              scale: [1, 1.4, 1],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-            style={{
-              width: particle.size,
-              height: particle.size,
-              boxShadow: "0 0 12px rgba(255,255,255,0.6)",
-            }}
-          />
-        ))}
-        {shootingStars.map((star) => (
-          <span
-            key={star.id}
-            className='absolute top-0 left-0 h-px w-32 bg-gradient-to-r from-transparent via-white to-transparent shooting-star'
-            style={{
-              transform: `translate(${star.x * width}px, ${star.y * height}px) rotate(25deg)`,
-              animationDelay: `${star.delay}s`,
-              animationDuration: `${star.duration}s`,
-            }}
-          />
-        ))}
+        {hasMounted &&
+          particles.map((particle) => (
+            <motion.div
+              key={particle.id}
+              className='absolute rounded-full bg-white'
+              initial={{
+                x: particle.x * width,
+                y: particle.y * height,
+                opacity: particle.opacity,
+              }}
+              animate={{
+                y: [null, Math.random() * height],
+                opacity: [null, 0, particle.opacity],
+                scale: [1, 1.4, 1],
+              }}
+              transition={{
+                duration: particle.duration,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              style={{
+                width: particle.size,
+                height: particle.size,
+                boxShadow: "0 0 12px rgba(255,255,255,0.6)",
+              }}
+            />
+          ))}
+        {hasMounted &&
+          shootingStars.map((star) => (
+            <span
+              key={star.id}
+              className='absolute top-0 left-0 h-px w-40 bg-linear-to-r from-transparent via-white to-transparent shooting-star'
+              style={{
+                transform: `translate(${star.x * width}px, ${star.y * height}px) rotate(25deg)`,
+                animationDelay: `${star.delay}s`,
+                animationDuration: `${star.duration}s`,
+                ["--sx" as string]: `${star.x * width}px`,
+                ["--sy" as string]: `${star.y * height}px`,
+                ["--dx" as string]: `${star.driftX}px`,
+                ["--dy" as string]: `${star.driftY}px`,
+              }}
+            />
+          ))}
       </div>
 
       <div className='container mx-auto px-6 relative z-10'>
@@ -131,7 +168,10 @@ export function AnimatedHero() {
                   ease: "easeInOut",
                 }}
               />
-              <div className='relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-500 p-1'>
+              <div className='relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-500 p-1 planet-core'>
+                <div className='absolute inset-0 flex items-center justify-center'>
+                  <div className='planet-ring' />
+                </div>
                 <div className='w-full h-full rounded-full bg-slate-900 overflow-hidden'>
                   <Image
                     src='/profile.png'
@@ -233,14 +273,19 @@ export function AnimatedHero() {
         @keyframes shootingStar {
           0% {
             opacity: 0;
-            transform: translate3d(0, 0, 0) rotate(25deg);
+            transform: translate3d(var(--sx), var(--sy), 0) rotate(25deg);
           }
-          15% {
+          10% {
             opacity: 1;
           }
           100% {
             opacity: 0;
-            transform: translate3d(320px, 140px, 0) rotate(25deg);
+            transform: translate3d(
+              calc(var(--sx) + var(--dx)),
+              calc(var(--sy) + var(--dy)),
+              0
+            )
+            rotate(25deg);
           }
         }
         .shooting-star {
@@ -248,6 +293,35 @@ export function AnimatedHero() {
           animation-timing-function: ease-in;
           animation-iteration-count: infinite;
           opacity: 0;
+        }
+        .planet-ring {
+          position: absolute;
+          width: 165%;
+          height: 18%;
+          border: 2px solid rgba(255, 255, 255, 0.6);
+          border-left-color: transparent;
+          border-right-color: transparent;
+          border-bottom-color: rgba(255, 255, 255, 0.4);
+          border-radius: 999px;
+          transform: rotate(-20deg);
+          box-shadow:
+            0 0 28px rgba(168, 85, 247, 0.35),
+            0 0 16px rgba(255, 255, 255, 0.4);
+          animation: ringFloat 6s ease-in-out infinite;
+          pointer-events: none;
+        }
+        .planet-core {
+          box-shadow:
+            0 0 30px rgba(99, 102, 241, 0.35),
+            0 0 60px rgba(34, 211, 238, 0.2);
+        }
+        @keyframes ringFloat {
+          0%, 100% {
+            transform: rotate(-20deg) translateY(0);
+          }
+          50% {
+            transform: rotate(-20deg) translateY(6px);
+          }
         }
       `}</style>
     </section>
