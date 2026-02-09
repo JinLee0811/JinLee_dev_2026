@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Calendar, Clock, ArrowRight, BookOpen, TrendingUp } from "lucide-react";
-import { blogPosts } from "@/data/blogPosts";
+import type { BlogIndexItem } from "@/lib/blog";
 
 interface BlogSectionProps {
   onViewAll: () => void;
+  posts: BlogIndexItem[];
 }
 
-export function BlogSection({ onViewAll }: BlogSectionProps) {
+export function BlogSection({ onViewAll, posts }: BlogSectionProps) {
   return (
     <section className="py-32 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-purple-500 to-transparent" />
@@ -42,9 +43,9 @@ export function BlogSection({ onViewAll }: BlogSectionProps) {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {blogPosts.map((post, index) => (
+          {posts.map((post, index) => (
             <motion.article
-              key={post.id}
+              key={post.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -66,7 +67,7 @@ export function BlogSection({ onViewAll }: BlogSectionProps) {
                 <div className="relative h-56 overflow-hidden">
                   <motion.img
                     src={post.image}
-                    alt={post.title}
+                    alt={post.titleEn}
                     className="w-full h-full object-cover"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.6 }}

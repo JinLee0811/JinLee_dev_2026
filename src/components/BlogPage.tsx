@@ -9,17 +9,19 @@ import {
   BookOpen,
   ArrowRight,
 } from "lucide-react";
-import { blogPosts } from "@/data/blogPosts";
+import type { BlogIndexItem } from "@/lib/blog";
 
-const categories = ["All", ...new Set(blogPosts.map((post) => post.category))];
-const allTags = Array.from(
-  new Set(blogPosts.flatMap((post) => post.tags))
-).sort();
+type BlogPageProps = {
+  posts: BlogIndexItem[];
+};
 
-export function BlogPage() {
+export function BlogPage({ posts }: BlogPageProps) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const categories = ["All", ...new Set(posts.map((post) => post.category))];
+  const allTags = Array.from(new Set(posts.flatMap((post) => post.tags))).sort();
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) =>
@@ -27,7 +29,7 @@ export function BlogPage() {
     );
   };
 
-  const filteredPosts = blogPosts.filter((post) => {
+  const filteredPosts = posts.filter((post) => {
     const matchesCategory =
       selectedCategory === "All" || post.category === selectedCategory;
     const matchesSearch =
@@ -147,7 +149,7 @@ export function BlogPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {filteredPosts.map((post, index) => (
             <motion.article
-              key={post.id}
+              key={post.slug}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.05 }}

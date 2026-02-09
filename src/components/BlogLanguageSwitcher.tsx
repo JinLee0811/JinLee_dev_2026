@@ -1,14 +1,16 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { MDXRemote } from "next-mdx-remote";
+import type { SerializedMdx } from "@/lib/blog";
 
 type BlogLanguageSwitcherProps = {
   titleEn: string;
   titleKo: string;
   excerptEn: string;
   excerptKo: string;
-  contentEn: string[];
-  contentKo: string[];
+  contentEn: SerializedMdx;
+  contentKo: SerializedMdx;
 };
 
 export function BlogLanguageSwitcher({
@@ -64,9 +66,7 @@ export function BlogLanguageSwitcher({
       </div>
 
       <div className="space-y-6 text-lg leading-relaxed text-slate-300">
-        {content.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
+        <MDXRemote {...content} />
       </div>
     </div>
   );

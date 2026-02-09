@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, Heart } from "lucide-react";
 
 export function Footer() {
   return (
@@ -13,7 +13,7 @@ export function Footer() {
             transition={{ duration: 0.6 }}
             className="mb-8"
           >
-            <h3 className="text-3xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent text-center">
+            <h3 className="text-3xl font-bold mb-2 bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent text-center">
               Open to collaborations?
             </h3>
             <p className="text-slate-400 text-center">
@@ -29,7 +29,7 @@ export function Footer() {
             className="flex gap-4 mb-8"
           >
             <a
-              href="https://github.com"
+              href="https://github.com/JinLee0811"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
@@ -37,7 +37,7 @@ export function Footer() {
               <Github className="w-6 h-6" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/jin-lee-72b653272/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
@@ -45,10 +45,18 @@ export function Footer() {
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="mailto:hello@example.com"
+              href="mailto:jinlee.engineer@gmail.com"
               className="p-4 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
             >
               <Mail className="w-6 h-6" />
+            </a>
+            <a
+              href="https://docs.google.com/document/d/1kNtBOncHUM6n4OWfZKeex-dorXs-CgUPRkM03NQU9cY/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+            >
+              <FileText className="w-6 h-6" />
             </a>
           </motion.div>
 
