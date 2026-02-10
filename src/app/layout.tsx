@@ -16,6 +16,12 @@ export const metadata: Metadata = {
   title: "Jin Lee | Software Engineer",
   description:
     "I enjoy turning complex problems into simple, maintainable web solutions. Currently focused on building production-ready applications with React, Next.js, and Node.js.",
+  icons: {
+    icon: [
+      { url: "/icon.png", rel: "icon", type: "image/png" },
+      { url: "/icon.png", rel: "shortcut icon", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({

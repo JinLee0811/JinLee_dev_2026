@@ -53,22 +53,22 @@ export async function POST(request: Request) {
 
   const systemPrompt = buildSystemPrompt(content, data as Record<string, unknown>);
 
-  const inputMessages = [
+  const chatMessages = [
     {
       role: "system",
-      content: [{ type: "text", text: systemPrompt }],
+      content: systemPrompt,
     },
     ...history.map((item) => ({
       role: item.role,
-      content: [{ type: "text", text: item.content }],
+      content: item.content,
     })),
     {
       role: "user",
-      content: [{ type: "text", text: message }],
+      content: message,
     },
   ];
 
-  const response = await fetch("https://api.openai.com/v1/responses", {
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -76,9 +76,9 @@ export async function POST(request: Request) {
     },
     body: JSON.stringify({
       model: "gpt-4o-mini",
-      input: inputMessages,
+      messages: chatMessages,
       temperature: 0.2,
-      max_output_tokens: 400,
+      max_tokens: 400,
     }),
   });
 
@@ -92,8 +92,7 @@ export async function POST(request: Request) {
 
   const dataJson = await response.json();
   const answer =
-    dataJson.output_text ??
-    dataJson.output?.[0]?.content?.[0]?.text ??
+    dataJson.choices?.[0]?.message?.content ??
     "I don't know based on the provided info.";
 
   return NextResponse.json({ answer });

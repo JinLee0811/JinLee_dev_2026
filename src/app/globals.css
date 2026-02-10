@@ -236,4 +236,26 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+
+  .qna-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.6) transparent;
+  }
+
+  .qna-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .qna-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .qna-scroll::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.6);
+    border-radius: 999px;
+  }
+
+  .qna-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.8);
+  }
 }
