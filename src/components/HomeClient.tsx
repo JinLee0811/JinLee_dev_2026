@@ -13,6 +13,7 @@ import { BlogSection } from "@/components/BlogSection";
 import { Footer } from "@/components/Footer";
 import { AllProjects } from "@/components/AllProjects";
 import { BlogPage } from "@/components/BlogPage";
+import { QnAPage } from "@/components/QnAPage";
 import type { BlogIndexItem } from "@/lib/blog";
 
 type HomeClientProps = {
@@ -26,7 +27,7 @@ export function HomeClient({ posts }: HomeClientProps) {
 
   useEffect(() => {
     const view = searchParams.get("view");
-    if (view === "blog" || view === "projects" || view === "home") {
+    if (view === "blog" || view === "projects" || view === "home" || view === "qna") {
       setCurrentPage(view);
     }
   }, [searchParams]);
@@ -54,6 +55,8 @@ export function HomeClient({ posts }: HomeClientProps) {
         return <AllProjects />;
       case "blog":
         return <BlogPage posts={posts} />;
+      case "qna":
+        return <QnAPage />;
       case "home":
       default:
         return (

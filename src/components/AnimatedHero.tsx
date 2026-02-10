@@ -1,7 +1,15 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { useMemo, useEffect, useState } from "react";
-import { Github, Linkedin, Mail, FileText, ArrowDown, Sparkles } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  FileText,
+  Instagram,
+  ArrowDown,
+  Sparkles,
+} from "lucide-react";
 
 const socialLinks = [
   {
@@ -93,7 +101,7 @@ export function AnimatedHero() {
 
   return (
     <section className='min-h-screen flex items-center justify-center relative overflow-hidden'>
-      <div className='absolute inset-0 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950'>
+      <div className='absolute inset-0 bg-linear-to-br from-slate-950 via-purple-950 to-slate-950'>
         <div className='absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.25),transparent_55%)]' />
         <div className='absolute inset-0 opacity-30'>
           <div className='absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob' />
@@ -155,9 +163,12 @@ export function AnimatedHero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className='text-center'>
-            <motion.div className='relative inline-block mb-8' whileHover={{ scale: 1.05 }}>
+            <motion.div
+              className='relative inline-block mb-8 group'
+              whileHover={{ scale: 1.05 }}
+            >
               <motion.div
-                className='absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-2xl opacity-50'
+                className='absolute inset-0 bg-linear-to-r from-purple-500 to-blue-500 rounded-full blur-2xl opacity-50'
                 animate={{
                   scale: [1, 1.2, 1],
                   opacity: [0.5, 0.8, 0.5],
@@ -168,10 +179,7 @@ export function AnimatedHero() {
                   ease: "easeInOut",
                 }}
               />
-              <div className='relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-500 p-1 planet-core'>
-                <div className='absolute inset-0 flex items-center justify-center'>
-                  <div className='planet-ring' />
-                </div>
+              <div className='relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-linear-to-br from-purple-500 via-blue-500 to-cyan-500 p-1 planet-core'>
                 <div className='w-full h-full rounded-full bg-slate-900 overflow-hidden'>
                   <Image
                     src='/profile.png'
@@ -182,6 +190,19 @@ export function AnimatedHero() {
                     priority
                   />
                 </div>
+                <div className='absolute inset-0 rounded-full bg-slate-950/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+                <a
+                  href='https://www.instagram.com/jin.lee811/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100'
+                  aria-label='Visit Instagram'
+                >
+                  <span className='inline-flex h-16 w-16 items-center justify-center rounded-full shadow-lg'>
+                    <span className='absolute inset-0 rounded-full bg-white/90' />
+                    <Instagram className='h-7 w-7 text-[#E1306C] relative' />
+                  </span>
+                </a>
               </div>
             </motion.div>
 
@@ -190,7 +211,7 @@ export function AnimatedHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
               className='text-6xl md:text-8xl font-bold mb-4'>
-              <span className='bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent'>
+              <span className='bg-linear-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent'>
                 Jin Lee
               </span>
             </motion.h1>
@@ -230,7 +251,7 @@ export function AnimatedHero() {
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}>
                   <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br ${gradientClass} opacity-0 group-hover:opacity-20 transition-opacity`}
+                    className={`absolute inset-0 bg-linear-to-br ${gradientClass} opacity-0 group-hover:opacity-20 transition-opacity`}
                   />
                   <Icon className='w-6 h-6 text-white relative z-10' />
                 </motion.a>
@@ -294,34 +315,10 @@ export function AnimatedHero() {
           animation-iteration-count: infinite;
           opacity: 0;
         }
-        .planet-ring {
-          position: absolute;
-          width: 165%;
-          height: 18%;
-          border: 2px solid rgba(255, 255, 255, 0.6);
-          border-left-color: transparent;
-          border-right-color: transparent;
-          border-bottom-color: rgba(255, 255, 255, 0.4);
-          border-radius: 999px;
-          transform: rotate(-20deg);
-          box-shadow:
-            0 0 28px rgba(168, 85, 247, 0.35),
-            0 0 16px rgba(255, 255, 255, 0.4);
-          animation: ringFloat 6s ease-in-out infinite;
-          pointer-events: none;
-        }
         .planet-core {
           box-shadow:
             0 0 30px rgba(99, 102, 241, 0.35),
             0 0 60px rgba(34, 211, 238, 0.2);
-        }
-        @keyframes ringFloat {
-          0%, 100% {
-            transform: rotate(-20deg) translateY(0);
-          }
-          50% {
-            transform: rotate(-20deg) translateY(6px);
-          }
         }
       `}</style>
     </section>

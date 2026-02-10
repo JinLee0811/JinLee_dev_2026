@@ -1,8 +1,9 @@
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X, Code2 } from "lucide-react";
 
-export type NavigationPage = "home" | "projects" | "blog";
+export type NavigationPage = "home" | "projects" | "blog" | "qna";
 
 interface NavigationProps {
   currentPage: NavigationPage;
@@ -21,10 +22,15 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems: Array<{ id: NavigationPage; label: string }> = [
+  const navItems: Array<{
+    id: NavigationPage;
+    label: string;
+    href?: string;
+  }> = [
     { id: "home", label: "Home" },
     { id: "projects", label: "Projects" },
     { id: "blog", label: "Blog" },
+    { id: "qna", label: "Q&A", href: "/?view=qna" },
   ];
 
   return (
@@ -45,7 +51,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="p-2 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg group-hover:shadow-lg group-hover:shadow-purple-500/50 transition-all">
+            <div className="p-2 bg-linear-to-br from-purple-500 to-blue-500 rounded-lg group-hover:shadow-lg group-hover:shadow-purple-500/50 transition-all">
               <Code2 className="w-6 h-6 text-white" />
             </div>
             <span className="text-white font-bold text-xl hidden sm:block">
@@ -54,21 +60,40 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           </motion.button>
 
           <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => onNavigate(item.id)}
-                className={`px-6 py-2 rounded-full transition-all ${
-                  currentPage === item.id
-                    ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white"
-                    : "text-white/80 hover:text-white hover:bg-white/10"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {item.label}
-              </motion.button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = currentPage === item.id;
+              const className = `px-6 py-2 rounded-full transition-all ${
+                isActive
+                  ? "bg-linear-to-r from-purple-500 to-blue-500 text-white"
+                  : "text-white/80 hover:text-white hover:bg-white/10"
+              }`;
+
+              if (item.href) {
+                return (
+                  <motion.div
+                    key={item.id}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Link href={item.href} className={className}>
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                );
+              }
+
+              return (
+                <motion.button
+                  key={item.id}
+                  onClick={() => onNavigate(item.id)}
+                  className={className}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {item.label}
+                </motion.button>
+              );
+            })}
           </div>
 
           <button
@@ -92,22 +117,40 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           className="md:hidden bg-slate-900/95 backdrop-blur-lg border-t border-white/10"
         >
           <div className="container mx-auto px-6 py-4 space-y-2">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => {
-                  onNavigate(item.id);
-                  setIsMobileMenuOpen(false);
-                }}
-                className={`w-full text-left px-4 py-3 rounded-lg transition-all ${
-                  currentPage === item.id
-                    ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white"
-                    : "text-white/80 hover:bg-white/10"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = currentPage === item.id;
+              const className = `w-full text-left px-4 py-3 rounded-lg transition-all ${
+                isActive
+                  ? "bg-linear-to-r from-purple-500 to-blue-500 text-white"
+                  : "text-white/80 hover:bg-white/10"
+              }`;
+
+              if (item.href) {
+                return (
+                  <Link
+                    key={item.id}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={className}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    onNavigate(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={className}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
           </div>
         </motion.div>
       )}

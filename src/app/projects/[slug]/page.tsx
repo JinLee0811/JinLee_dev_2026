@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
 import { BackLink } from "../../../components/BackLink";
+import { ProjectGallery } from "../../../components/ProjectGallery";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -29,65 +29,52 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <span className="uppercase tracking-[0.2em]">{project.date}</span>
           </div>
 
-          <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <p className="text-sm uppercase tracking-[0.2em] text-purple-300">
-                  Case Study
-                </p>
-                <h1 className="text-4xl md:text-6xl font-bold">
-                  {project.title}
-                </h1>
-                <p className="text-xl text-slate-300">{project.subtitle}</p>
-                <p className="text-lg text-slate-400 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-purple-200"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-full bg-linear-to-r from-purple-600 to-blue-600 text-white font-semibold"
-                  >
-                    Live demo
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-semibold"
-                  >
-                    View code
-                  </a>
-                )}
-              </div>
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <p className="text-sm uppercase tracking-[0.2em] text-purple-300">
+                Case Study
+              </p>
+              <h1 className="text-4xl md:text-6xl font-bold">
+                {project.title}
+              </h1>
+              <p className="text-xl text-slate-300">{project.subtitle}</p>
+              <p className="text-lg text-slate-400 leading-relaxed">
+                {project.description}
+              </p>
             </div>
 
-            <div className="relative aspect-4/3 rounded-3xl overflow-hidden border border-white/10 bg-white/5">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-linear-to-tr from-slate-950/80 via-transparent to-slate-950/20" />
+            <div className="flex flex-wrap gap-3">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm text-purple-200"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-4">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-full bg-linear-to-r from-purple-600 to-blue-600 text-white font-semibold"
+                >
+                  Live demo
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-white font-semibold"
+                >
+                  View code
+                </a>
+              )}
             </div>
           </div>
 
@@ -106,22 +93,10 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           {project.galleryImages && project.galleryImages.length > 0 && (
             <div className="mt-16">
               <h2 className="text-2xl font-semibold mb-6">Gallery</h2>
-              <div className="grid gap-6 md:grid-cols-2">
-                {project.galleryImages.map((image, index) => (
-                  <div
-                    key={`${project.slug}-gallery-${index}`}
-                    className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-white/5"
-                  >
-                    <Image
-                      src={image}
-                      alt={`${project.title} screenshot ${index + 1}`}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-tr from-slate-950/70 via-transparent to-slate-950/10" />
-                  </div>
-                ))}
-              </div>
+              <ProjectGallery
+                title={project.title}
+                images={project.galleryImages}
+              />
             </div>
           )}
         </div>
