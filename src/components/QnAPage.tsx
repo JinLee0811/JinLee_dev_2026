@@ -18,6 +18,7 @@ export function QnAPage() {
     "What is your core tech stack?",
     "What kind of roles are you looking for?",
     "What problems do you enjoy solving?",
+    "What visa are you on? Do you need sponsorship?",
   ] as const;
 
   const cannedAnswers: Record<(typeof suggestedQuestions)[number], string> = {
@@ -29,6 +30,8 @@ export function QnAPage() {
       "I'm most interested in roles where I can build production-ready web applications end-to-end: from designing the data model and APIs to shipping polished frontend experiences.",
     "What problems do you enjoy solving?":
       "I enjoy simplifying complex flows, making data-heavy experiences feel intuitive, and building systems that stay reliable under real-world constraints.",
+    "What visa are you on? Do you need sponsorship?":
+      "I'm currently in Sydney on a subclass 820 partner visa. I can work full-time with no work restrictions, and I don't require employer sponsorship to be hired.",
   };
 
   const handleSuggestedClick = (question: (typeof suggestedQuestions)[number]) => {
@@ -70,6 +73,15 @@ export function QnAPage() {
 
     const nextMessages: ChatMessage[] = [...messages, { role: "user", content: trimmed }];
 
+    // 사용자가 직접 타이핑한 질문(추천 질문이 아닌 것)의 개수 계산
+    const typedQuestionCount = nextMessages.filter(
+      (message) =>
+        message.role === "user" &&
+        !suggestedQuestions.includes(
+          message.content as (typeof suggestedQuestions)[number],
+        ),
+    ).length;
+
     setMessages(nextMessages);
     setInput("");
     setIsLoading(true);
@@ -91,7 +103,15 @@ export function QnAPage() {
       }
 
       const data = (await response.json()) as { answer: string };
-      setMessages((prev) => [...prev, { role: "assistant", content: data.answer }]);
+      let finalAnswer = data.answer;
+
+      // 직접 타이핑한 질문이 두 번째 이상일 때, 토큰/커피 관련 유쾌한 문구 추가
+      if (typedQuestionCount >= 2) {
+        finalAnswer +=
+          "\n\n---\nBy the way, this AI runs on Jin's own tokens. If you keep firing lots of questions, his wallet might end up a little empty—consider this a tiny coffee-fund reminder ☕.";
+      }
+
+      setMessages((prev) => [...prev, { role: "assistant", content: finalAnswer }]);
     } catch (err) {
       const message = err instanceof Error ? err.message : "Something went wrong";
       setError(message);
@@ -104,9 +124,11 @@ export function QnAPage() {
     <div className='min-h-screen bg-slate-950 text-white pt-24'>
       <div className='container mx-auto flex min-h-[calc(100vh-6rem)] max-w-5xl flex-col px-4 md:px-6'>
         <div className='mb-6 space-y-2'>
-          <p className='text-sm uppercase tracking-[0.2em] text-purple-300'>Q&A</p>
+          <p className='text-sm uppercase tracking-[0.2em] text-purple-300'>AI Chat</p>
           <h1 className='text-3xl md:text-4xl font-bold'>Ask Me Anything</h1>
-          <p className='text-sm text-slate-400'>I only answer based on my profile document.</p>
+          <p className='text-sm text-slate-400'>
+            This is an AI version of me. It answers questions based on my profile, projects, and experience.
+          </p>
         </div>
 
         <div className='flex-1 space-y-6 pr-2'>
@@ -137,7 +159,7 @@ export function QnAPage() {
                 className={`flex items-end gap-3 ${isUser ? "justify-end" : "justify-start"}`}>
                 {!isUser && (
                   <div className='relative h-8 w-8 overflow-hidden rounded-full border border-white/10 bg-white/5'>
-                    <Image src='/profile.jpeg' alt='Jin Lee' fill className='object-cover' />
+                    <Image src='/profile.png' alt='Jin Lee' fill className='object-cover' />
                   </div>
                 )}
                 <div
@@ -170,7 +192,7 @@ export function QnAPage() {
           {isLoading && (
             <div className='flex items-end gap-3'>
               <div className='relative h-8 w-8 overflow-hidden rounded-full border border-white/10 bg-white/5'>
-                <Image src='/profile.jpeg' alt='Jin Lee' fill className='object-cover' />
+                <Image src='/profile.png' alt='Jin Lee' fill className='object-cover' />
               </div>
               <div className='rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-slate-300'>
                 <span className='inline-flex items-center gap-2'>

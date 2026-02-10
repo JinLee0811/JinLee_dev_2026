@@ -28,7 +28,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     { id: "home", label: "Home" },
     { id: "projects", label: "Projects" },
     { id: "blog", label: "Blog" },
-    { id: "qna", label: "Q&A" },
+    { id: "qna", label: "AI Chat" },
   ];
 
   return (
