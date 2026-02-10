@@ -102,6 +102,28 @@ export default async function ProjectDetailPage({ params }: PageProps) {
               items={project.takeaways}
             />
           </div>
+
+          {project.galleryImages && project.galleryImages.length > 0 && (
+            <div className="mt-16">
+              <h2 className="text-2xl font-semibold mb-6">Gallery</h2>
+              <div className="grid gap-6 md:grid-cols-2">
+                {project.galleryImages.map((image, index) => (
+                  <div
+                    key={`${project.slug}-gallery-${index}`}
+                    className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+                  >
+                    <Image
+                      src={image}
+                      alt={`${project.title} screenshot ${index + 1}`}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-tr from-slate-950/70 via-transparent to-slate-950/10" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </main>

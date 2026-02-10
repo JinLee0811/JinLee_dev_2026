@@ -80,31 +80,22 @@ export function FeaturedProjects({ onViewAll }: FeaturedProjectsProps) {
                     <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/20 to-transparent opacity-60" />
                   </div>
 
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {project.liveUrl && (
-                      <motion.a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-4 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <ExternalLink className="w-6 h-6 text-slate-900" />
-                      </motion.a>
-                    )}
-                    {project.githubUrl && (
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-4 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
-                        whileHover={{ scale: 1.1, rotate: -5 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Github className="w-6 h-6 text-slate-900" />
-                      </motion.a>
-                    )}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      onClick={() => {
+                        if (typeof window !== "undefined") {
+                          window.sessionStorage.setItem(
+                            "projects:return",
+                            `${window.location.pathname}${window.location.search}`
+                          );
+                        }
+                      }}
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg text-slate-900 font-semibold"
+                    >
+                      <span>View details</span>
+                      <ArrowUpRight className="w-5 h-5" />
+                    </Link>
                   </div>
                 </div>
               </motion.div>

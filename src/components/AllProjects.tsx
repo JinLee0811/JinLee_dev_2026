@@ -1,20 +1,7 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { useState } from "react";
-import {
-  ExternalLink,
-  Github,
-  Search,
-  Filter,
-  ShoppingCart,
-  Smartphone,
-  BarChart,
-  Code2,
-  MessageSquare,
-  Zap,
-  Globe,
-  Database,
-} from "lucide-react";
+import { ExternalLink, Github, Search, Filter } from "lucide-react";
 import { projects } from "@/data/projects";
 
 const categories = [
@@ -22,20 +9,16 @@ const categories = [
   ...Array.from(new Set(projects.map((project) => project.category))),
 ];
 
-const categoryIcons: Record<string, React.ReactNode> = {
-  Personal: <ShoppingCart className="w-5 h-5" />,
-  "Team Projects": <MessageSquare className="w-5 h-5" />,
-  Freelance: <Globe className="w-5 h-5" />,
-  "Data & AI": <BarChart className="w-5 h-5" />,
-  "AI/ML": <BarChart className="w-5 h-5" />,
-  Backend: <Zap className="w-5 h-5" />,
-  Frontend: <Code2 className="w-5 h-5" />,
-  Mobile: <Smartphone className="w-5 h-5" />,
-};
-
 export function AllProjects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const formatMonthYear = (date: string) => {
+    const parts = date.split(" ");
+    if (parts.length >= 3) {
+      return `${parts[1]} ${parts[2]}`;
+    }
+    return date;
+  };
 
   const filteredProjects = projects.filter((project) => {
     const matchesCategory =
@@ -135,41 +118,25 @@ export function AllProjects() {
 
                   <div className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
                     <span className="text-xs font-semibold text-slate-900">
-                      {project.date}
+                      {formatMonthYear(project.date)}
                     </span>
                   </div>
 
-                  <div className="absolute top-3 right-3 p-2 bg-white/90 backdrop-blur-sm rounded-lg">
-                    {categoryIcons[project.category] || (
-                      <Database className="w-5 h-5" />
-                    )}
-                  </div>
-
-                  <div className="absolute inset-0 bg-linear-to-t from-purple-900/90 to-blue-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                    {project.liveUrl && (
-                      <motion.a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white rounded-full"
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <ExternalLink className="w-5 h-5 text-slate-900" />
-                      </motion.a>
-                    )}
-                    {project.githubUrl && (
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white rounded-full"
-                        whileHover={{ scale: 1.1, rotate: -5 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Github className="w-5 h-5 text-slate-900" />
-                      </motion.a>
-                    )}
+                  <div className="absolute inset-0 bg-linear-to-t from-purple-900/90 to-blue-900/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      onClick={() => {
+                        if (typeof window !== "undefined") {
+                          window.sessionStorage.setItem(
+                            "projects:return",
+                            `${window.location.pathname}${window.location.search}`
+                          );
+                        }
+                      }}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-slate-900 rounded-full font-semibold"
+                    >
+                      <span>View details</span>
+                    </Link>
                   </div>
                 </div>
 
@@ -202,22 +169,30 @@ export function AllProjects() {
                       </span>
                     )}
                   </div>
-                  {project.slug && (
-                    <div className="mt-4">
-                      <Link
-                        href={`/projects/${project.slug}`}
-                        onClick={() => {
-                          if (typeof window !== "undefined") {
-                            window.sessionStorage.setItem(
-                              "projects:return",
-                              `${window.location.pathname}${window.location.search}`
-                            );
-                          }
-                        }}
-                        className="inline-flex items-center gap-2 text-sm text-purple-300 hover:text-purple-200"
-                      >
-                        <span>View details</span>
-                      </Link>
+                  {(project.liveUrl || project.githubUrl) && (
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm text-purple-300 hover:text-purple-200"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          <span>Live demo</span>
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm text-purple-300 hover:text-purple-200"
+                        >
+                          <Github className="w-4 h-4" />
+                          <span>View code</span>
+                        </a>
+                      )}
                     </div>
                   )}
                 </div>

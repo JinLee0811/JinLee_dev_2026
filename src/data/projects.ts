@@ -8,6 +8,7 @@ export type ProjectDetail = {
   date: string;
   category: string;
   image: string;
+  galleryImages?: string[];
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
@@ -43,7 +44,13 @@ export const projects: ProjectDetail[] = [
       "Built to summarise long review streams into practical insights. Focused on reliability, cost control, and clear user-facing summaries.",
     date: "01 Apr 2025",
     category: "Personal",
-    image: imageSet.product,
+    image: "/projects/before-you-go/cover.png",
+    galleryImages: [
+      "/projects/before-you-go/cover.png",
+      "/projects/before-you-go/login.png",
+      "/projects/before-you-go/restraurants_list.png",
+      "/projects/before-you-go/review_summary.png",
+    ],
     tags: [
       "Next.js",
       "TypeScript",
@@ -87,7 +94,13 @@ export const projects: ProjectDetail[] = [
       "Designed to support live CCTV streams, with recorded video used to simulate real-time input due to infrastructure constraints.",
     date: "01 Apr 2025",
     category: "Team Projects",
-    image: imageSet.dashboard,
+    image: "/projects/smart-farm-monitoring/cover.png",
+    galleryImages: [
+      "/projects/smart-farm-monitoring/cover.png",
+      "/projects/smart-farm-monitoring/Screenshot 2026-02-10 at 8.46.42 PM.png",
+      "/projects/smart-farm-monitoring/Screenshot 2026-02-10 at 8.46.52 PM.png",
+      "/projects/smart-farm-monitoring/Screenshot 2026-02-10 at 8.47.11 PM.png",
+    ],
     tags: ["React", "TypeScript", "Node.js", "Python", "YOLOv8", "OpenCV"],
     liveUrl: "https://www.canva.com/design/DAHAtsAZpic/q2x8lIIOW1ayPc_cwyxqwA/edit",
     githubUrl: "https://github.com/JinLee0811/smart-farm-monitoring",
@@ -158,27 +171,6 @@ export const projects: ProjectDetail[] = [
     ],
   },
   {
-    id: 4,
-    slug: "ai-analytics-dashboard",
-    title: "AI Analytics Dashboard",
-    subtitle: "Interactive ML Insights and Forecasting",
-    description:
-      "A decision intelligence dashboard combining ML insights with interactive data visualisation.",
-    overview:
-      "Focused on narrative dashboards and high-performance charting for data-heavy views.",
-    date: "01 Sep 2024",
-    category: "Personal",
-    image: imageSet.data,
-    tags: ["React", "Python", "TensorFlow", "D3.js", "FastAPI"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    features: ["Forecast dashboards", "Custom report builder"],
-    techStack: ["React", "FastAPI", "TensorFlow", "D3.js"],
-    apis: ["Internal ML services"],
-    challenges: ["Scaling data queries", "Chart performance at scale"],
-    takeaways: ["Improved data-to-insight workflows for stakeholders"],
-  },
-  {
     id: 5,
     slug: "first-react-portfolio",
     title: "First React Portfolio",
@@ -220,7 +212,14 @@ export const projects: ProjectDetail[] = [
       "Built to practise full-stack development with Next.js, Prisma, and MongoDB.",
     date: "01 Jul 2024",
     category: "Personal",
-    image: imageSet.system,
+    image: "/projects/netflix-clone/Video.png",
+    galleryImages: [
+      "/projects/netflix-clone/Video.png",
+      "/projects/netflix-clone/VideoList.png",
+      "/projects/netflix-clone/Modal.png",
+      "/projects/netflix-clone/User.png",
+      "/projects/netflix-clone/Login.png",
+    ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "MongoDB"],
     liveUrl: "https://jin-netflix-clone.vercel.app/",
     githubUrl: "https://github.com/JinLee0811/jin-netflix-clone",
@@ -238,36 +237,6 @@ export const projects: ProjectDetail[] = [
     takeaways: [
       "Full-stack development benefits from strong schema design",
       "Consistent UI patterns improve usability",
-    ],
-  },
-  {
-    id: 7,
-    slug: "shopping-website",
-    title: "Shopping Website",
-    subtitle: "Team E-commerce Platform",
-    description:
-      "A full-stack e-commerce platform with authentication, product management, and order processing.",
-    overview:
-      "Focused on team collaboration and building reliable REST APIs with a React frontend.",
-    date: "01 Jan 2023",
-    category: "Team Projects",
-    image: imageSet.product,
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "MongoDB", "Node.js"],
-    githubUrl: "https://github.com/JinLee0811/Shoppingmall-Web-Service",
-    features: [
-      "Product CRUD and inventory management",
-      "Shopping cart and checkout flow",
-      "Responsive UI for mobile and desktop",
-    ],
-    techStack: ["Next.js", "Node.js", "MongoDB"],
-    apis: ["REST API", "Express.js"],
-    challenges: [
-      "Coordinating frontend and backend integration",
-      "Managing shared state for cart and orders",
-    ],
-    takeaways: [
-      "Clear API contracts reduce integration friction",
-      "Team communication directly impacts delivery quality",
     ],
   },
   {
@@ -311,7 +280,8 @@ export const projects: ProjectDetail[] = [
       "A small game project to practise real-time input handling and 2D animation.",
     date: "01 Apr 2024",
     category: "Personal",
-    image: imageSet.system,
+    image: "/projects/pokemon-volleyball/pocketmon.gif",
+    galleryImages: ["/projects/pokemon-volleyball/pocketmon.gif"],
     tags: ["Python", "Pygame", "2D Graphics"],
     githubUrl: "https://github.com/JinLee0811/python_pygame_pj",
     features: [
@@ -341,7 +311,13 @@ export const projects: ProjectDetail[] = [
       "Built to showcase projects with polished UI and smooth animations.",
     date: "01 Aug 2024",
     category: "Personal",
-    image: imageSet.portfolio,
+    image: "/projects/second-react-portfolio/portfolio.png",
+    galleryImages: [
+      "/projects/second-react-portfolio/portfolio.png",
+      "/projects/second-react-portfolio/Screenshot 2025-04-19 at 6.05.14 PM.png",
+      "/projects/second-react-portfolio/Screenshot 2025-04-19 at 6.05.46 PM.png",
+      "/projects/second-react-portfolio/Screenshot 2025-04-19 at 6.06.58 PM.png",
+    ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://jin-lee-portfolio.vercel.app/",
     githubUrl: "https://github.com/JinLee0811/JinLee_Portfolio",
@@ -372,7 +348,8 @@ export const projects: ProjectDetail[] = [
       "Focused on data consistency across CLI and GUI interfaces with a shared data layer.",
     date: "01 Mar 2024",
     category: "Team Projects",
-    image: imageSet.system,
+    image: "/projects/dotnet-uniplanner/cover.png",
+    galleryImages: ["/projects/dotnet-uniplanner/cover.png"],
     tags: ["Python", "Tkinter", "SQLite", "Git"],
     githubUrl:
       "https://github.com/JinLee0811/UTS_TeamProject_CLIUniApp-and-GUIUniApp_by_Python",
@@ -403,7 +380,14 @@ export const projects: ProjectDetail[] = [
       "Focused on multi-language UX, real-time notifications, and dual user flows.",
     date: "01 Dec 2024",
     category: "Team Projects",
-    image: imageSet.product,
+    image: "/projects/parttimemate/cover.png",
+    galleryImages: [
+      "/projects/parttimemate/cover.png",
+      "/projects/parttimemate/431220862-c4401b88-78a7-4c71-9292-aa5070428132.png",
+      "/projects/parttimemate/431221175-e455f0ad-ab6d-4e2f-8cfd-1c64e0f399a6.png",
+      "/projects/parttimemate/431221577-4dd547fa-69dd-4536-97cb-5b7f3a4e5739.png",
+      "/projects/parttimemate/431222220-38cb7b93-e78a-4cbe-b68a-0d61f7b04950.png",
+    ],
     tags: ["React", "TypeScript", "Tailwind CSS", "NestJS", "MySQL", "Expo"],
     githubUrl: "https://github.com/JinLee0811/partTimeMate_FE",
     features: [
@@ -433,7 +417,12 @@ export const projects: ProjectDetail[] = [
       "Delivered a polished site with responsive design and subtle motion.",
     date: "01 Nov 2024",
     category: "Freelance",
-    image: imageSet.portfolio,
+    image: "/projects/modern-portfolio-freelance/cover.png",
+    galleryImages: [
+      "/projects/modern-portfolio-freelance/cover.png",
+      "/projects/modern-portfolio-freelance/431224186-b25900f7-e460-4c9c-a890-03c1c53595f3.png",
+      "/projects/modern-portfolio-freelance/431224281-cc385cc0-1583-4706-b83d-917da25c7471.png",
+    ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Figma"],
     liveUrl: "https://chaebin.vercel.app/",
     features: [
@@ -463,7 +452,13 @@ export const projects: ProjectDetail[] = [
       "Built to streamline client requests with validation and automated responses.",
     date: "01 Dec 2024",
     category: "Personal",
-    image: imageSet.product,
+    image: "/projects/lub-let-us-build/431225417-aceb5248-105f-4695-8843-23f36c837ff9.png",
+    galleryImages: [
+      "/projects/lub-let-us-build/431225417-aceb5248-105f-4695-8843-23f36c837ff9.png",
+      "/projects/lub-let-us-build/431225479-773b63df-5421-4286-9aaa-7f52ef863ea2.png",
+      "/projects/lub-let-us-build/431225557-9d2fb9cb-dfef-443a-b8d2-255cae9620f7.png",
+      "/projects/lub-let-us-build/431225662-c6a5ed59-c95c-4a6b-91e5-e978d3de692c.png",
+    ],
     tags: ["React", "TypeScript", "Tailwind CSS", "Google API"],
     liveUrl: "https://lub-letusbuild.vercel.app/",
     features: [
@@ -493,7 +488,8 @@ export const projects: ProjectDetail[] = [
       "Built to explore AI product delivery with Stripe-backed billing.",
     date: "01 Aug 2024",
     category: "Personal",
-    image: imageSet.product,
+    image: "/projects/ai-platform/Ai_platform.png",
+    galleryImages: ["/projects/ai-platform/Ai_platform.png"],
     tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
     githubUrl: "https://github.com/JinLee0811/Ai-platform-with-Next-js",
     features: [
@@ -523,7 +519,12 @@ export const projects: ProjectDetail[] = [
       "Focused on combining strong UI with AI-driven interactions.",
     date: "01 May 2025",
     category: "Personal",
-    image: imageSet.portfolio,
+    image: "/projects/jin-dev-portfolio-2025/main.png",
+    galleryImages: [
+      "/projects/jin-dev-portfolio-2025/main.png",
+      "/projects/jin-dev-portfolio-2025/chatbot.png",
+      "/projects/jin-dev-portfolio-2025/projectSection.png",
+    ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "OpenAI API"],
     liveUrl: "https://jinleedev.vercel.app/",
     githubUrl: "https://github.com/JinLee0811/JinLee_Portfolio",
@@ -554,7 +555,15 @@ export const projects: ProjectDetail[] = [
       "Built with a focus on trust, moderation, and scalable community workflows.",
     date: "01 Jun 2025",
     category: "Team Projects",
-    image: imageSet.dashboard,
+    image: "/projects/au-korean-community/main.png",
+    galleryImages: [
+      "/projects/au-korean-community/main.png",
+      "/projects/au-korean-community/login.png",
+      "/projects/au-korean-community/community.png",
+      "/projects/au-korean-community/market.png",
+      "/projects/au-korean-community/review.png",
+      "/projects/au-korean-community/tip.png",
+    ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL"],
     githubUrl: "https://github.com/JinLee0811/AUS_business_private",
     features: [
@@ -571,6 +580,46 @@ export const projects: ProjectDetail[] = [
     takeaways: [
       "RLS policies are essential for community safety",
       "Clear data models enable multi-section platforms",
+    ],
+  },
+  {
+    id: 18,
+    slug: "uniplanner",
+    title: "UniPlanner",
+    subtitle: "Offline Student Timetable & Task Manager",
+    description:
+      "A Windows desktop application for managing subjects, schedules, assignments, and personal tasks in one offline-first system.",
+    overview:
+      "Built to keep student data local and reliable, with a three-layered architecture and hybrid data access for performance and maintainability.",
+    date: "01 Sep 2025",
+    category: "Team Projects",
+    image: "/projects/dotnet-uniplanner/cover.png",
+    galleryImages: ["/projects/dotnet-uniplanner/cover.png"],
+    tags: ["C#", ".NET 8", "SQLite", "Windows Forms", "Dapper", "EF Core"],
+    githubUrl: "https://github.com/JinLee0811/.NET_UniPlanner-/tree/main",
+    features: [
+      "Subject management with colour coding and validation",
+      "Weekly timetable scheduling with conflict detection",
+      "Assignment, task, and personal todo tracking",
+      "Offline-first storage with local SQLite database",
+    ],
+    techStack: [
+      "C#",
+      ".NET 8",
+      "Windows Forms",
+      "SQLite",
+      "Dapper",
+      "Entity Framework Core 8",
+    ],
+    apis: ["SQLite (local file)", "Dapper", "EF Core"],
+    challenges: [
+      "Designing a hybrid data access strategy (Dapper + EF Core)",
+      "Keeping validation consistent across service and UI layers",
+      "Handling schema evolution with runtime bootstrapping",
+    ],
+    takeaways: [
+      "Layered architecture improves maintainability for desktop apps",
+      "Offline-first design simplifies reliability and privacy",
     ],
   },
 ];
