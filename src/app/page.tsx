@@ -1,13 +1,17 @@
-import { Suspense } from "react";
 import { getAllPosts } from "@/lib/blog";
 import { HomeClient } from "@/components/HomeClient";
 
-export default async function Home() {
+type HomePageProps = {
+  searchParams?: Promise<{ view?: string }>;
+};
+
+export default async function Home({ searchParams }: HomePageProps) {
   const posts = await getAllPosts();
 
-  return (
-    <Suspense fallback={null}>
-      <HomeClient posts={posts} />
-    </Suspense>
-  );
+  const resolvedSearchParams = (await searchParams) ?? {};
+  const view = resolvedSearchParams.view;
+  const initialView =
+    view === "projects" || view === "blog" || view === "qna" ? view : "home";
+
+  return <HomeClient posts={posts} initialView={initialView} />;
 }

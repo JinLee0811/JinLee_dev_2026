@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { Menu, X, Code2 } from "lucide-react";
 
 export type NavigationPage = "home" | "projects" | "blog" | "qna";
@@ -22,15 +21,14 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems: Array<{
-    id: NavigationPage;
-    label: string;
-    href?: string;
-  }> = [
+  // Blog 페이지는 처음부터 배경이 밝아서 상단바를 어둡게 처리
+  const hasDarkBackground = isScrolled || currentPage === "blog";
+
+  const navItems: Array<{ id: NavigationPage; label: string }> = [
     { id: "home", label: "Home" },
     { id: "projects", label: "Projects" },
     { id: "blog", label: "Blog" },
-    { id: "qna", label: "Q&A", href: "/?view=qna" },
+    { id: "qna", label: "Q&A" },
   ];
 
   return (
@@ -38,7 +36,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        hasDarkBackground
           ? "bg-slate-900/80 backdrop-blur-lg shadow-lg"
           : "bg-transparent"
       }`}
@@ -67,20 +65,6 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                   ? "bg-linear-to-r from-purple-500 to-blue-500 text-white"
                   : "text-white/80 hover:text-white hover:bg-white/10"
               }`;
-
-              if (item.href) {
-                return (
-                  <motion.div
-                    key={item.id}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Link href={item.href} className={className}>
-                      {item.label}
-                    </Link>
-                  </motion.div>
-                );
-              }
 
               return (
                 <motion.button
@@ -124,19 +108,6 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                   ? "bg-linear-to-r from-purple-500 to-blue-500 text-white"
                   : "text-white/80 hover:bg-white/10"
               }`;
-
-              if (item.href) {
-                return (
-                  <Link
-                    key={item.id}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={className}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              }
 
               return (
                 <button

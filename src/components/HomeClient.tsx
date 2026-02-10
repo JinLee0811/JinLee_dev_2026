@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Navigation, type NavigationPage } from "@/components/Navigation";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CustomCursor } from "@/components/CustomCursor";
@@ -18,36 +18,24 @@ import type { BlogIndexItem } from "@/lib/blog";
 
 type HomeClientProps = {
   posts: BlogIndexItem[];
+  initialView: NavigationPage;
 };
 
-export function HomeClient({ posts }: HomeClientProps) {
-  const [currentPage, setCurrentPage] = useState<NavigationPage>("home");
-  const searchParams = useSearchParams();
+export function HomeClient({ posts, initialView }: HomeClientProps) {
+  const [currentPage, setCurrentPage] = useState<NavigationPage>(initialView);
   const router = useRouter();
-
-  useEffect(() => {
-    const view = searchParams.get("view");
-    if (view === "blog" || view === "projects" || view === "home" || view === "qna") {
-      setCurrentPage(view);
-    }
-  }, [searchParams]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
   useEffect(() => {
-    const view = searchParams.get("view");
     if (currentPage === "home") {
-      if (view) {
-        router.replace("/");
-      }
-      return;
-    }
-    if (view !== currentPage) {
+      router.replace("/");
+    } else {
       router.replace(`/?view=${currentPage}`);
     }
-  }, [currentPage, router, searchParams]);
+  }, [currentPage, router]);
 
   const renderPage = () => {
     switch (currentPage) {
