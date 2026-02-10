@@ -30,7 +30,7 @@ export function BackLink({ fallbackHref, label, storageKey }: BackLinkProps) {
     <button
       type="button"
       onClick={handleClick}
-      className="text-purple-300 hover:text-purple-200"
+      className="text-purple-500 hover:text-purple-400 font-semibold"
     >
       ← {label}
     </button>

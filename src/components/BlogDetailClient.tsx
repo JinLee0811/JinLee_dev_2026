@@ -47,6 +47,15 @@ export function BlogDetailClient({
     <main className={isDark ? "min-h-screen bg-slate-950 text-white" : "min-h-screen bg-white text-slate-900"}>
       <section className="pt-28 pb-16 px-6">
         <div className="container mx-auto max-w-4xl space-y-8">
+          <div className={isDark ? "flex items-center justify-between text-sm text-slate-400" : "flex items-center justify-between text-sm text-slate-500"}>
+            <BackLink
+              fallbackHref="/?view=blog"
+              label="Back to previous page"
+              storageKey="blog:return"
+            />
+            <span>{date}</span>
+          </div>
+
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-3">
               <span className={isDark ? "text-xs uppercase tracking-[0.2em] text-slate-400" : "text-xs uppercase tracking-[0.2em] text-slate-500"}>
@@ -123,15 +132,6 @@ export function BlogDetailClient({
                 </button>
               </div>
             </div>
-          </div>
-
-          <div className={isDark ? "flex items-center justify-between text-sm text-slate-400" : "flex items-center justify-between text-sm text-slate-500"}>
-            <BackLink
-              fallbackHref="/?view=blog"
-              label="Back to previous page"
-              storageKey="blog:return"
-            />
-            <span>{date}</span>
           </div>
 
           <div className="space-y-2">
