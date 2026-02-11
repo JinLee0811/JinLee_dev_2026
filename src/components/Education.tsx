@@ -99,37 +99,37 @@ export function Education() {
   ];
 
   return (
-    <section className="py-20 bg-slate-50">
-      <div className="container mx-auto px-6">
+    <section className="py-12 md:py-20 bg-slate-50">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-3 md:mb-4">
             Education & Certifications
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Continuous learning through formal education and industry
-            certifications.
+          <p className="text-base md:text-xl text-slate-600 max-w-2xl mx-auto">
+            <span className="md:hidden">Formal education & certs.</span>
+            <span className="hidden md:inline">Continuous learning through formal education and industry certifications.</span>
           </p>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
           <div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-6"
+              className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6"
             >
-              <div className="p-3 bg-linear-to-br from-purple-500 to-blue-500 rounded-xl">
-                <GraduationCap className="w-6 h-6 text-white" />
+              <div className="p-2 md:p-3 bg-linear-to-br from-purple-500 to-blue-500 rounded-lg md:rounded-xl">
+                <GraduationCap className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">Education</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900">Education</h3>
             </motion.div>
 
             <div className="space-y-6">
@@ -140,11 +140,11 @@ export function Education() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
+                  className="bg-white rounded-xl p-4 md:p-6 shadow-md hover:shadow-lg transition-shadow"
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <h4 className="text-xl font-bold text-slate-900 mb-1">
+                      <h4 className="text-lg md:text-xl font-bold text-slate-900 mb-1">
                         {edu.institution}
                       </h4>
                       <p className="text-purple-600 font-semibold">
@@ -181,12 +181,12 @@ export function Education() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-6"
+              className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6"
             >
-              <div className="p-3 bg-linear-to-br from-blue-500 to-cyan-500 rounded-xl">
-                <Award className="w-6 h-6 text-white" />
+              <div className="p-2 md:p-3 bg-linear-to-br from-blue-500 to-cyan-500 rounded-lg md:rounded-xl">
+                <Award className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900">
                 Certifications
               </h3>
             </motion.div>
@@ -199,7 +199,7 @@ export function Education() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-shadow"
+                  className="bg-white rounded-xl p-4 md:p-5 shadow-md hover:shadow-lg transition-shadow"
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-blue-100 rounded-lg mt-1">
@@ -226,22 +226,22 @@ export function Education() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-8 bg-linear-to-br from-purple-500 to-blue-500 rounded-xl p-6 text-white"
+              className="mt-6 md:mt-8 bg-linear-to-br from-purple-500 to-blue-500 rounded-xl p-4 md:p-6 text-white"
             >
-              <h4 className="font-bold text-lg mb-3">Skills Summary</h4>
-              <div className="flex flex-wrap items-center gap-3">
+              <h4 className="font-bold text-base md:text-lg mb-2 md:mb-3">Skills Summary</h4>
+              <div className="flex flex-wrap items-center gap-2 md:gap-3">
                 {skillLogos.map((skill) => (
                   <div
                     key={skill.label}
-                    className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2"
+                    className="flex items-center gap-1.5 md:gap-2 rounded-full bg-white/10 px-3 py-1.5 md:px-4 md:py-2"
                   >
                     <img
                       src={skill.icon}
                       alt={`${skill.label} logo`}
-                      className="h-5 w-5"
+                      className="h-4 w-4 md:h-5 md:w-5"
                       loading="lazy"
                     />
-                    <span className="text-xs text-purple-100">
+                    <span className="text-[10px] md:text-xs text-purple-100">
                       {skill.label}
                     </span>
                   </div>

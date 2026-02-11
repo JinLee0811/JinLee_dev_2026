@@ -40,26 +40,27 @@ const experiences: ExperienceItem[] = [
 
 export function Experience() {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section className="py-12 md:py-20 bg-white">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-3 md:mb-4">
             Experience
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Building products across startups, scale-ups, and agencies.
+          <p className="text-base md:text-xl text-slate-600 max-w-2xl mx-auto">
+            <span className="md:hidden">Startups, scale-ups & agencies.</span>
+            <span className="hidden md:inline">Building products across startups, scale-ups, and agencies.</span>
           </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-blue-500 to-cyan-500" />
+            <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-blue-500 to-cyan-500" />
 
             {experiences.map((exp, index) => (
               <motion.div
@@ -68,18 +69,18 @@ export function Experience() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative mb-12 last:mb-0"
+                className="relative mb-8 md:mb-12 last:mb-0"
               >
-                <div className="absolute left-6 top-6 w-5 h-5 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full border-4 border-white shadow-lg" />
+                <div className="absolute left-4 md:left-6 top-5 md:top-6 w-4 h-4 md:w-5 md:h-5 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full border-2 md:border-4 border-white shadow-lg" />
 
-                <div className="ml-20 bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
+                <div className="ml-16 md:ml-20 bg-slate-50 rounded-xl p-4 md:p-6 hover:shadow-lg transition-shadow duration-300">
                   <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-1">
+                      <h3 className="text-lg md:text-2xl font-bold text-slate-900 mb-1">
                         {exp.position}
                       </h3>
                       <div className="flex items-center gap-2 text-purple-600 mb-2">
-                        <Briefcase className="w-5 h-5" />
+                        <Briefcase className="w-4 h-4 md:w-5 md:h-5" />
                         <span className="font-semibold">{exp.company}</span>
                       </div>
                     </div>

@@ -42,29 +42,29 @@ export function BlogPage({ posts }: BlogPageProps) {
   });
 
   return (
-    <div className="min-h-screen bg-white pt-32 pb-20">
-      <div className="container mx-auto px-6">
+    <div className="min-h-screen bg-white pt-24 md:pt-32 pb-12 md:pb-20">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="mb-10 md:mb-16 text-center"
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-purple-100 rounded-full mb-4 md:mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
           >
-            <BookOpen className="w-4 h-4 text-purple-600" />
-            <span className="text-sm text-purple-600 font-semibold">BLOG</span>
+            <BookOpen className="w-3.5 h-3.5 md:w-4 md:h-4 text-purple-600" />
+            <span className="text-xs md:text-sm text-purple-600 font-semibold">BLOG</span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6">
+          <h1 className="text-3xl md:text-7xl font-bold text-slate-900 mb-4 md:mb-6">
             Writing
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Deep dives on engineering decisions, architecture, and product
-            craft.
+          <p className="text-base md:text-xl text-slate-600 max-w-2xl mx-auto">
+            <span className="md:hidden">Engineering & product insights.</span>
+            <span className="hidden md:inline">Deep dives on engineering decisions, architecture, and product craft.</span>
           </p>
         </motion.div>
 
@@ -75,13 +75,13 @@ export function BlogPage({ posts }: BlogPageProps) {
           className="mb-8"
         >
           <div className="relative max-w-2xl mx-auto">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+            <Search className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400" />
             <input
               type="text"
               placeholder="Search posts..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors"
+              className="w-full pl-10 md:pl-12 pr-3 md:pr-4 py-3 md:py-4 text-sm md:text-base bg-slate-50 border border-slate-200 rounded-xl md:rounded-2xl text-slate-900 placeholder-slate-500 focus:outline-none focus:border-purple-500 transition-colors"
             />
           </div>
         </motion.div>
@@ -90,14 +90,14 @@ export function BlogPage({ posts }: BlogPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mb-6"
+          className="mb-5 md:mb-6"
         >
-          <div className="flex items-center gap-3 flex-wrap justify-center">
+          <div className="flex items-center gap-2 md:gap-3 flex-wrap justify-center">
             {categories.map((category) => (
               <motion.button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                className={`px-4 py-1.5 md:px-6 md:py-2 rounded-full text-sm md:text-base font-medium transition-all ${
                   selectedCategory === category
                     ? "bg-linear-to-r from-purple-600 to-blue-600 text-white shadow-lg"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200"
@@ -115,9 +115,9 @@ export function BlogPage({ posts }: BlogPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-12"
+          className="mb-8 md:mb-12"
         >
-          <div className="flex items-center gap-3 flex-wrap justify-center">
+          <div className="flex items-center gap-2 md:gap-3 flex-wrap justify-center">
             <Tag className="w-4 h-4 text-slate-400" />
             {allTags.map((tag) => (
               <motion.button
@@ -146,7 +146,7 @@ export function BlogPage({ posts }: BlogPageProps) {
           {filteredPosts.length} posts
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-10 md:mb-16">
           {filteredPosts.map((post, index) => (
             <motion.article
               key={post.slug}
@@ -167,7 +167,7 @@ export function BlogPage({ posts }: BlogPageProps) {
                 }}
                 className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-purple-300 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-100 h-full flex flex-col"
               >
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-44 md:h-56 overflow-hidden">
                   <motion.img
                     src={post.image}
                     alt={post.titleEn}
@@ -184,7 +184,7 @@ export function BlogPage({ posts }: BlogPageProps) {
                   </div>
                 </div>
 
-                <div className="p-6 flex-1 flex flex-col">
+                <div className="p-4 md:p-6 flex-1 flex flex-col">
                   <div className="flex items-center gap-4 text-sm text-slate-500 mb-3">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
@@ -196,7 +196,7 @@ export function BlogPage({ posts }: BlogPageProps) {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors line-clamp-2">
+                  <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2 md:mb-3 group-hover:text-purple-600 transition-colors line-clamp-2">
                     {post.titleEn}
                   </h3>
 
@@ -234,7 +234,7 @@ export function BlogPage({ posts }: BlogPageProps) {
             animate={{ opacity: 1 }}
             className="text-center py-20"
           >
-            <p className="text-2xl text-slate-400">No results found.</p>
+            <p className="text-lg md:text-2xl text-slate-400">No results found.</p>
           </motion.div>
         )}
       </div>

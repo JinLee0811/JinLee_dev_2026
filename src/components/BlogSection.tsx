@@ -10,39 +10,39 @@ interface BlogSectionProps {
 
 export function BlogSection({ onViewAll, posts }: BlogSectionProps) {
   return (
-    <section className="py-32 bg-white relative overflow-hidden">
+    <section className="py-16 md:py-32 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-purple-500 to-transparent" />
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-purple-100 rounded-full mb-4 md:mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <BookOpen className="w-4 h-4 text-purple-600" />
-            <span className="text-sm text-purple-600 font-semibold">
+            <BookOpen className="w-3.5 h-3.5 md:w-4 md:h-4 text-purple-600" />
+            <span className="text-xs md:text-sm text-purple-600 font-semibold">
               BLOG & INSIGHTS
             </span>
           </motion.div>
 
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+          <h2 className="text-3xl md:text-6xl font-bold text-slate-900 mb-4 md:mb-6">
             Insights
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Lessons learned while building products and exploring new
-            technologies.
+          <p className="text-base md:text-xl text-slate-600 max-w-2xl mx-auto">
+            <span className="md:hidden">Lessons from products & tech.</span>
+            <span className="hidden md:inline">Lessons learned while building products and exploring new technologies.</span>
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-10 md:mb-16">
           {posts.map((post, index) => (
             <motion.article
               key={post.slug}
@@ -64,7 +64,7 @@ export function BlogSection({ onViewAll, posts }: BlogSectionProps) {
                 }}
                 className="block bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-purple-300 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-100"
               >
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-44 md:h-56 overflow-hidden">
                   <motion.img
                     src={post.image}
                     alt={post.titleEn}
@@ -88,7 +88,7 @@ export function BlogSection({ onViewAll, posts }: BlogSectionProps) {
                   </div>
                 </div>
 
-                <div className="p-6">
+                <div className="p-4 md:p-6">
                   <div className="flex items-center gap-4 text-sm text-slate-500 mb-3">
                     <div className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
@@ -100,7 +100,7 @@ export function BlogSection({ onViewAll, posts }: BlogSectionProps) {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition-colors line-clamp-2">
+                  <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2 md:mb-3 group-hover:text-purple-600 transition-colors line-clamp-2">
                     {post.titleEn}
                   </h3>
 
@@ -129,7 +129,7 @@ export function BlogSection({ onViewAll, posts }: BlogSectionProps) {
         >
           <motion.button
             onClick={onViewAll}
-            className="group inline-flex items-center gap-3 px-10 py-5 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-purple-600 transition-all shadow-lg hover:shadow-xl"
+            className="group inline-flex items-center gap-2 md:gap-3 px-6 py-3 md:px-10 md:py-5 bg-slate-900 text-white rounded-full font-bold text-base md:text-lg hover:bg-purple-600 transition-all shadow-lg hover:shadow-xl"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -138,7 +138,7 @@ export function BlogSection({ onViewAll, posts }: BlogSectionProps) {
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              <ArrowRight className="w-6 h-6" />
+              <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
             </motion.div>
           </motion.button>
         </motion.div>

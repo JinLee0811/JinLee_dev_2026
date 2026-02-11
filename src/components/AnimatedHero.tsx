@@ -156,7 +156,7 @@ export function AnimatedHero() {
           ))}
       </div>
 
-      <div className='container mx-auto px-6 relative z-10'>
+      <div className='container mx-auto px-4 md:px-6 relative z-10'>
         <div className='max-w-5xl mx-auto'>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -164,7 +164,7 @@ export function AnimatedHero() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className='text-center'>
             <motion.div
-              className='relative inline-block mb-8 group'
+              className='relative inline-block mb-6 md:mb-8 group'
               whileHover={{ scale: 1.05 }}
             >
               <motion.div
@@ -179,7 +179,7 @@ export function AnimatedHero() {
                   ease: "easeInOut",
                 }}
               />
-              <div className='relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-linear-to-br from-purple-500 via-blue-500 to-cyan-500 p-1 planet-core'>
+              <div className='relative w-28 h-28 sm:w-36 sm:h-36 md:w-56 md:h-56 rounded-full bg-linear-to-br from-purple-500 via-blue-500 to-cyan-500 p-1 planet-core'>
                 <div className='w-full h-full rounded-full bg-slate-900 overflow-hidden'>
                   <Image
                     src='/profile.png'
@@ -198,9 +198,9 @@ export function AnimatedHero() {
                   className='absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100'
                   aria-label='Visit Instagram'
                 >
-                  <span className='inline-flex h-16 w-16 items-center justify-center rounded-full shadow-lg'>
+                  <span className='inline-flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-full shadow-lg'>
                     <span className='absolute inset-0 rounded-full bg-white/90' />
-                    <Instagram className='h-7 w-7 text-[#E1306C] relative' />
+                    <Instagram className='h-5 w-5 md:h-7 md:w-7 text-[#E1306C] relative' />
                   </span>
                 </a>
               </div>
@@ -210,7 +210,7 @@ export function AnimatedHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className='text-6xl md:text-8xl font-bold mb-4'>
+              className='text-4xl sm:text-5xl md:text-8xl font-bold mb-3 md:mb-4'>
               <span className='bg-linear-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent'>
                 Jin Lee
               </span>
@@ -220,10 +220,10 @@ export function AnimatedHero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className='mb-6'>
-              <div className='inline-flex items-center gap-2 px-6 py-3 bg-white/5 backdrop-blur-sm rounded-full border border-white/10'>
-                <Sparkles className='w-5 h-5 text-yellow-400' />
-                <span className='text-2xl text-white font-semibold'>Software Engineer</span>
+              className='mb-4 md:mb-6'>
+              <div className='inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-white/5 backdrop-blur-sm rounded-full border border-white/10'>
+                <Sparkles className='w-4 h-4 md:w-5 md:h-5 text-yellow-400' />
+                <span className='text-base md:text-2xl text-white font-semibold'>Software Engineer</span>
               </div>
             </motion.div>
 
@@ -231,29 +231,29 @@ export function AnimatedHero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
-              className='text-lg text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed'>
-              I enjoy turning complex problems into simple, maintainable web solutions. Currently
-              focused on building production-ready applications with React, Next.js, and Node.js.
+              className='text-sm md:text-lg text-slate-300 max-w-3xl mx-auto mb-8 md:mb-10 leading-relaxed px-2'>
+              <span className='md:hidden'>Building production-ready apps with React, Next.js & Node.</span>
+              <span className='hidden md:inline'>I enjoy turning complex problems into simple, maintainable web solutions. Currently focused on building production-ready applications with React, Next.js, and Node.js.</span>
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1 }}
-              className='flex gap-4 justify-center mb-12'>
+              className='flex gap-2 md:gap-4 justify-center mb-10 md:mb-12'>
               {socialLinks.map(({ Icon, href, gradientClass }) => (
                 <motion.a
                   key={href}
                   href={href}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='p-4 bg-white/5 backdrop-blur-sm hover:bg-white/10 rounded-2xl border border-white/10 transition-all group relative overflow-hidden'
+                  className='p-3 md:p-4 bg-white/5 backdrop-blur-sm hover:bg-white/10 rounded-xl md:rounded-2xl border border-white/10 transition-all group relative overflow-hidden'
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}>
                   <motion.div
                     className={`absolute inset-0 bg-linear-to-br ${gradientClass} opacity-0 group-hover:opacity-20 transition-opacity`}
                   />
-                  <Icon className='w-6 h-6 text-white relative z-10' />
+                  <Icon className='w-5 h-5 md:w-6 md:h-6 text-white relative z-10' />
                 </motion.a>
               ))}
             </motion.div>
@@ -263,7 +263,7 @@ export function AnimatedHero() {
       </div>
 
       <motion.div
-        className='absolute bottom-10 left-1/2 transform -translate-x-1/2'
+        className='absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}>
@@ -271,8 +271,8 @@ export function AnimatedHero() {
           animate={{ y: [0, 12, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className='flex flex-col items-center gap-2'>
-          <span className='text-sm text-slate-400'>Scroll</span>
-          <ArrowDown className='w-6 h-6 text-purple-400' />
+          <span className='text-xs md:text-sm text-slate-400'>Scroll</span>
+          <ArrowDown className='w-5 h-5 md:w-6 md:h-6 text-purple-400' />
         </motion.div>
       </motion.div>
 

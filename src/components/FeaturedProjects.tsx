@@ -13,45 +13,45 @@ export function FeaturedProjects({ onViewAll }: FeaturedProjectsProps) {
   return (
     <section
       id="featured-projects"
-      className="py-32 bg-slate-950 relative overflow-hidden"
+      className="py-16 md:py-32 bg-slate-950 relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-purple-500/10 border border-purple-500/20 rounded-full mb-4 md:mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <Star className="w-4 h-4 text-purple-400 fill-purple-400" />
-            <span className="text-sm text-purple-300 font-semibold">
+            <Star className="w-3.5 h-3.5 md:w-4 md:h-4 text-purple-400 fill-purple-400" />
+            <span className="text-xs md:text-sm text-purple-300 font-semibold">
               FEATURED PROJECTS
             </span>
           </motion.div>
 
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6">
             <span className="bg-linear-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
               Featured Work
             </span>
           </h2>
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-            Selected projects that highlight product thinking, engineering, and
-            craft.
+          <p className="text-base md:text-xl text-slate-400 max-w-2xl mx-auto">
+            <span className="md:hidden">Product thinking & engineering.</span>
+            <span className="hidden md:inline">Selected projects that highlight product thinking, engineering, and craft.</span>
           </p>
         </motion.div>
 
-        <div className="space-y-32 mb-20">
+        <div className="space-y-20 md:space-y-32 mb-12 md:mb-20">
           {featuredProjects.slice(0, 3).map((project, index) => (
             <motion.div
               key={project.id}
@@ -61,7 +61,7 @@ export function FeaturedProjects({ onViewAll }: FeaturedProjectsProps) {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               className={`flex flex-col ${
                 index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-              } gap-12 items-center`}
+              } gap-8 md:gap-12 items-center`}
             >
               <motion.div
                 className="lg:w-1/2 relative group"
@@ -117,12 +117,12 @@ export function FeaturedProjects({ onViewAll }: FeaturedProjectsProps) {
                         );
                       }
                     }}
-                    className="inline-flex items-center gap-3 text-4xl font-bold text-white mb-4 hover:text-purple-200 transition-colors"
+                    className="inline-flex items-center gap-2 md:gap-3 text-2xl md:text-4xl font-bold text-white mb-3 md:mb-4 hover:text-purple-200 transition-colors"
                   >
                     <span>{project.title}</span>
                     <ArrowUpRight className="w-6 h-6 opacity-70 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
                   </Link>
-                  <p className="text-lg text-slate-300 leading-relaxed">
+                  <p className="text-base md:text-lg text-slate-300 leading-relaxed">
                     {project.description}
                   </p>
                 </motion.div>
@@ -191,7 +191,7 @@ export function FeaturedProjects({ onViewAll }: FeaturedProjectsProps) {
         >
           <motion.button
             onClick={onViewAll}
-            className="group inline-flex items-center gap-3 px-10 py-5 bg-white/5 backdrop-blur-sm border-2 border-white/10 text-white rounded-full font-bold text-lg hover:bg-white/10 hover:border-purple-500/50 transition-all"
+            className="group inline-flex items-center gap-2 md:gap-3 px-6 py-3 md:px-10 md:py-5 bg-white/5 backdrop-blur-sm border-2 border-white/10 text-white rounded-full font-bold text-base md:text-lg hover:bg-white/10 hover:border-purple-500/50 transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -200,7 +200,7 @@ export function FeaturedProjects({ onViewAll }: FeaturedProjectsProps) {
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              <ArrowRight className="w-6 h-6" />
+              <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
             </motion.div>
           </motion.button>
         </motion.div>

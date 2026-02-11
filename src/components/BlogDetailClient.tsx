@@ -45,8 +45,8 @@ export function BlogDetailClient({
 
   return (
     <main className={isDark ? "min-h-screen bg-slate-950 text-white" : "min-h-screen bg-white text-slate-900"}>
-      <section className="pt-28 pb-16 px-6">
-        <div className="container mx-auto max-w-4xl space-y-8">
+      <section className="pt-20 md:pt-28 pb-12 md:pb-16 px-4 md:px-6">
+        <div className="container mx-auto max-w-4xl space-y-6 md:space-y-8">
           <div className={isDark ? "flex items-center justify-between text-sm text-slate-400" : "flex items-center justify-between text-sm text-slate-500"}>
             <BackLink
               fallbackHref="/?view=blog"
@@ -135,8 +135,8 @@ export function BlogDetailClient({
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-4xl md:text-6xl font-bold">{title}</h1>
-            <p className={isDark ? "text-lg text-slate-400" : "text-lg text-slate-600"}>{excerpt}</p>
+            <h1 className="text-2xl md:text-6xl font-bold">{title}</h1>
+            <p className={isDark ? "text-base md:text-lg text-slate-400" : "text-base md:text-lg text-slate-600"}>{excerpt}</p>
           </div>
 
           <div className={isDark ? "relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-white/5" : "relative aspect-video rounded-3xl overflow-hidden border border-slate-200 bg-slate-50"}>
@@ -144,7 +144,7 @@ export function BlogDetailClient({
             <div className={isDark ? "absolute inset-0 bg-linear-to-tr from-slate-950/70 via-transparent to-slate-950/10" : "absolute inset-0 bg-linear-to-tr from-white/60 via-transparent to-white/10"} />
           </div>
 
-          <div className={isDark ? "space-y-6 text-lg leading-relaxed text-slate-300" : "space-y-6 text-lg leading-relaxed text-slate-700"}>
+          <div className={isDark ? "space-y-4 md:space-y-6 text-base md:text-lg leading-relaxed text-slate-300" : "space-y-4 md:space-y-6 text-base md:text-lg leading-relaxed text-slate-700"}>
             <MDXRemote {...content} />
           </div>
 

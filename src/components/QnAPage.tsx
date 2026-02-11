@@ -121,14 +121,20 @@ export function QnAPage() {
   };
 
   return (
-    <div className='min-h-screen bg-slate-950 text-white pt-24'>
+    <div className='min-h-screen bg-slate-950 text-white pt-20 md:pt-24'>
       <div className='container mx-auto flex min-h-[calc(100vh-6rem)] max-w-5xl flex-col px-4 md:px-6'>
-        <div className='mb-6 space-y-2'>
-          <p className='text-sm uppercase tracking-[0.2em] text-purple-300'>AI Chat</p>
-          <h1 className='text-3xl md:text-4xl font-bold'>Ask Me Anything</h1>
-          <p className='text-sm text-slate-400'>
-            This is an AI version of me. It answers questions based on my profile, projects, and experience.
+        <div className='mb-5 md:mb-6 space-y-1 md:space-y-2'>
+          <p className='text-xs md:text-sm uppercase tracking-[0.2em] text-purple-300'>AI Chat</p>
+          <h1 className='text-2xl md:text-4xl font-bold'>Ask Me Anything</h1>
+          <p className='text-xs md:text-sm text-slate-400'>
+            <span className='md:hidden'>AI version of me. Answers from profile & projects.</span>
+            <span className='hidden md:inline'>This is an AI version of me. It answers questions based on my profile, projects, and experience.</span>
           </p>
+          <div className='rounded-lg border border-amber-500/30 bg-amber-500/5 px-4 py-2.5 mt-3'>
+            <p className='text-xs md:text-sm text-amber-200/90'>
+              <span className='font-semibold'>FYI:</span> This runs on Jin&apos;s own API tokens. Too many questions = wallet goes brrr 💸 When the AI stops responding, his tokens might be depleted—<a href='mailto:jinlee.engineer@gmail.com' className='underline hover:text-amber-100'>ping Jin</a> to gently demand a top-up.
+            </p>
+          </div>
         </div>
 
         <div className='flex-1 space-y-6 pr-2'>
@@ -138,14 +144,14 @@ export function QnAPage() {
                 key={question}
                 type='button'
                 onClick={() => handleSuggestedClick(question)}
-                className='rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 hover:border-purple-500/40 hover:bg-white/10 transition'>
+                className='rounded-full border border-white/10 bg-white/5 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm text-slate-200 hover:border-purple-500/40 hover:bg-white/10 transition'>
                 {question}
               </button>
             ))}
           </div>
 
           {messages.length === 0 && (
-            <div className='rounded-2xl border border-white/10 bg-white/5 p-6 text-slate-300'>
+            <div className='rounded-xl md:rounded-2xl border border-white/10 bg-white/5 p-4 md:p-6 text-sm md:text-base text-slate-300'>
               Try: “What projects are you most proud of?” or “What is your core tech stack?”
             </div>
           )}
@@ -163,12 +169,12 @@ export function QnAPage() {
                   </div>
                 )}
                 <div
-                  className={`max-w-[80%] rounded-2xl border px-5 py-4 ${
+                  className={`max-w-[85%] md:max-w-[80%] rounded-xl md:rounded-2xl border px-4 py-3 md:px-5 md:py-4 ${
                     isUser
                       ? "border-purple-500/30 bg-linear-to-r from-purple-600/20 to-blue-600/20 text-white"
                       : "border-white/10 bg-white/5 text-slate-200"
                   }`}>
-                  <p className='leading-relaxed whitespace-pre-wrap'>
+                  <p className='text-sm md:text-base leading-relaxed whitespace-pre-wrap'>
                     {isTyping ? (
                       <span className='inline-flex items-center gap-1'>
                         <span className='h-1.5 w-1.5 rounded-full bg-slate-300 animate-bounce' />
@@ -208,8 +214,13 @@ export function QnAPage() {
           )}
 
           {error && (
-            <div className='rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-red-200'>
-              {error}
+            <div className='rounded-xl md:rounded-2xl border border-amber-500/40 bg-amber-500/10 p-4'>
+              <p className='text-sm md:text-base text-amber-100 font-medium mb-2'>
+                Oops—looks like the AI couldn&apos;t answer this time. Chances are Jin&apos;s API tokens have run dry (we warned you! 😅).
+              </p>
+              <p className='text-sm text-amber-200/90'>
+                <a href='mailto:jinlee.engineer@gmail.com' className='underline hover:text-amber-100'>Drop Jin a line</a> and politely request a token recharge. He&apos;s probably just waiting for an excuse anyway.
+              </p>
             </div>
           )}
         </div>
@@ -220,15 +231,15 @@ export function QnAPage() {
               value={input}
               onChange={(event) => setInput(event.target.value)}
               placeholder='Ask a question about Jin Lee...'
-              rows={3}
-              className='w-full resize-none rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-purple-500'
+              rows={2}
+              className='w-full resize-none rounded-xl md:rounded-2xl border border-white/10 bg-white/5 px-3 py-2.5 md:px-4 md:py-3 text-sm md:text-base text-white placeholder:text-slate-500 focus:outline-none focus:border-purple-500'
             />
             <div className='flex items-center justify-end gap-3 mb-50'>
               <button
                 type='button'
                 onClick={handleSend}
                 disabled={isLoading}
-                className='rounded-full bg-linear-to-r from-purple-600 to-blue-600 px-6 py-3 text-sm font-semibold text-white hover:shadow-lg hover:shadow-purple-500/40 disabled:opacity-60'>
+                className='rounded-full bg-linear-to-r from-purple-600 to-blue-600 px-5 py-2.5 md:px-6 md:py-3 text-xs md:text-sm font-semibold text-white hover:shadow-lg hover:shadow-purple-500/40 disabled:opacity-60'>
                 Send
               </button>
             </div>
