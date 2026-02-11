@@ -22,8 +22,7 @@ export type ProjectDetail = {
 const imageSet = {
   product:
     "https://images.unsplash.com/photo-1694599048261-a1de00f0117e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-  data:
-    "https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+  data: "https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
   dashboard:
     "https://images.unsplash.com/photo-1649451844931-57e22fc82de3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
   system:
@@ -51,28 +50,15 @@ export const projects: ProjectDetail[] = [
       "/projects/before-you-go/restraurants_list.png",
       "/projects/before-you-go/review_summary.png",
     ],
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Supabase",
-      "Gemini API",
-      "React Query",
-      "Zustand",
-    ],
-    liveUrl: "https://beforeyougo.vercel.app/",
+    tags: ["Next.js", "TypeScript", "Supabase", "Gemini API", "React Query", "Zustand"],
+    liveUrl: "https://before-you-go-ai.vercel.app/",
     githubUrl: "https://github.com/JinLee0811/BeforeYouGO",
     features: [
       "AI review summarisation with pros/cons and key themes",
       "Google Maps review ingestion and caching",
       "Supabase-backed storage for summaries and history",
     ],
-    techStack: [
-      "Next.js",
-      "TypeScript",
-      "Supabase",
-      "Tailwind CSS",
-      "Vercel",
-    ],
+    techStack: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "Vercel"],
     apis: ["Google Places API", "Gemini API"],
     challenges: [
       "Handling multilingual reviews and inconsistent formats",
@@ -109,13 +95,7 @@ export const projects: ProjectDetail[] = [
       "Backend alert processing and state management",
       "Monitoring dashboard for events and status",
     ],
-    techStack: [
-      "React",
-      "TypeScript",
-      "Node.js (REST API)",
-      "Python",
-      "PostgreSQL",
-    ],
+    techStack: ["React", "TypeScript", "Node.js (REST API)", "Python", "PostgreSQL"],
     apis: ["REST-based inter-service communication"],
     challenges: [
       "Selecting ML models and sourcing reliable video data",
@@ -138,27 +118,14 @@ export const projects: ProjectDetail[] = [
     date: "01 Apr 2023",
     category: "Team Projects",
     image: imageSet.portfolio,
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Prisma",
-      "TensorFlow",
-      "Python",
-    ],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "TensorFlow", "Python"],
     githubUrl: "https://github.com/JinLee0811/CropDoctor-Ai-webservice",
     features: [
       "Image-based AI disease detection",
       "Real-time analysis with treatment recommendations",
       "Dashboard for history and feedback tracking",
     ],
-    techStack: [
-      "Next.js",
-      "TypeScript",
-      "TensorFlow",
-      "Python ML libraries",
-      "Docker",
-    ],
+    techStack: ["Next.js", "TypeScript", "TensorFlow", "Python ML libraries", "Docker"],
     apis: ["Custom AI API", "RESTful services", "Real-time inference API"],
     challenges: [
       "Training with large image datasets",
@@ -208,8 +175,7 @@ export const projects: ProjectDetail[] = [
     subtitle: "Full-stack Streaming Clone",
     description:
       "A full-stack Netflix clone with OAuth authentication, movie browsing, and wishlist management.",
-    overview:
-      "Built to practise full-stack development with Next.js, Prisma, and MongoDB.",
+    overview: "Built to practise full-stack development with Next.js, Prisma, and MongoDB.",
     date: "01 Jul 2024",
     category: "Personal",
     image: "/projects/netflix-clone/Video.png",
@@ -276,8 +242,7 @@ export const projects: ProjectDetail[] = [
     subtitle: "Pygame-based Mini Game",
     description:
       "A Pokémon-themed volleyball mini-game built with Pygame, focused on physics and sprite animation.",
-    overview:
-      "A small game project to practise real-time input handling and 2D animation.",
+    overview: "A small game project to practise real-time input handling and 2D animation.",
     date: "01 Apr 2024",
     category: "Personal",
     image: "/projects/pokemon-volleyball/pocketmon.gif",
@@ -307,8 +272,7 @@ export const projects: ProjectDetail[] = [
     subtitle: "Modern Portfolio Website",
     description:
       "A modern portfolio site with responsive layouts, motion, and project documentation.",
-    overview:
-      "Built to showcase projects with polished UI and smooth animations.",
+    overview: "Built to showcase projects with polished UI and smooth animations.",
     date: "01 Aug 2024",
     category: "Personal",
     image: "/projects/second-react-portfolio/portfolio.png",
@@ -344,15 +308,13 @@ export const projects: ProjectDetail[] = [
     subtitle: "CLI + GUI Data Management App",
     description:
       "A Python-based university management system built for both CLI and GUI workflows.",
-    overview:
-      "Focused on data consistency across CLI and GUI interfaces with a shared data layer.",
+    overview: "Focused on data consistency across CLI and GUI interfaces with a shared data layer.",
     date: "01 Mar 2024",
     category: "Team Projects",
     image: "/projects/dotnet-uniplanner/cover.png",
     galleryImages: ["/projects/dotnet-uniplanner/cover.png"],
     tags: ["Python", "Tkinter", "SQLite", "Git"],
-    githubUrl:
-      "https://github.com/JinLee0811/UTS_TeamProject_CLIUniApp-and-GUIUniApp_by_Python",
+    githubUrl: "https://github.com/JinLee0811/UTS_TeamProject_CLIUniApp-and-GUIUniApp_by_Python",
     features: [
       "Dual interface (CLI + GUI) for data operations",
       "Role-based access and reporting tools",
@@ -376,8 +338,7 @@ export const projects: ProjectDetail[] = [
     subtitle: "Multilingual Job Matching Platform",
     description:
       "A multilingual job matching platform for international students and local businesses in Australia.",
-    overview:
-      "Focused on multi-language UX, real-time notifications, and dual user flows.",
+    overview: "Focused on multi-language UX, real-time notifications, and dual user flows.",
     date: "01 Dec 2024",
     category: "Team Projects",
     image: "/projects/parttimemate/cover.png",
@@ -413,8 +374,7 @@ export const projects: ProjectDetail[] = [
     subtitle: "Client Portfolio Build",
     description:
       "A minimalist portfolio website for a freelance client, focused on performance and clean UI.",
-    overview:
-      "Delivered a polished site with responsive design and subtle motion.",
+    overview: "Delivered a polished site with responsive design and subtle motion.",
     date: "01 Nov 2024",
     category: "Freelance",
     image: "/projects/modern-portfolio-freelance/cover.png",
@@ -446,10 +406,8 @@ export const projects: ProjectDetail[] = [
     slug: "lub-let-us-build",
     title: "LUB (Let Us Build)",
     subtitle: "Freelance Request Platform",
-    description:
-      "A project inquiry platform with automated email delivery using Google APIs.",
-    overview:
-      "Built to streamline client requests with validation and automated responses.",
+    description: "A project inquiry platform with automated email delivery using Google APIs.",
+    overview: "Built to streamline client requests with validation and automated responses.",
     date: "01 Dec 2024",
     category: "Personal",
     image: "/projects/lub-let-us-build/431225417-aceb5248-105f-4695-8843-23f36c837ff9.png",
@@ -482,10 +440,8 @@ export const projects: ProjectDetail[] = [
     slug: "ai-platform",
     title: "AI Platform",
     subtitle: "AI SaaS with Subscriptions",
-    description:
-      "A SaaS platform with AI integration, subscription management, and payments.",
-    overview:
-      "Built to explore AI product delivery with Stripe-backed billing.",
+    description: "A SaaS platform with AI integration, subscription management, and payments.",
+    overview: "Built to explore AI product delivery with Stripe-backed billing.",
     date: "01 Aug 2024",
     category: "Personal",
     image: "/projects/ai-platform/Ai_platform.png",
@@ -499,10 +455,7 @@ export const projects: ProjectDetail[] = [
     ],
     techStack: ["Next.js", "TypeScript", "Prisma", "Stripe"],
     apis: ["Stripe API", "AI Model APIs"],
-    challenges: [
-      "Managing subscription lifecycle complexity",
-      "Designing for scalable AI usage",
-    ],
+    challenges: ["Managing subscription lifecycle complexity", "Designing for scalable AI usage"],
     takeaways: [
       "Billing flows require careful edge-case handling",
       "Modular services simplify AI integration",
@@ -515,8 +468,7 @@ export const projects: ProjectDetail[] = [
     subtitle: "Portfolio with AI Chatbot",
     description:
       "A portfolio website featuring an AI assistant with retrieval-augmented responses.",
-    overview:
-      "Focused on combining strong UI with AI-driven interactions.",
+    overview: "Focused on combining strong UI with AI-driven interactions.",
     date: "01 May 2025",
     category: "Personal",
     image: "/projects/jin-dev-portfolio-2025/main.png",
@@ -551,8 +503,7 @@ export const projects: ProjectDetail[] = [
     subtitle: "Community Platform for Koreans in Australia",
     description:
       "A community platform for reviews, tips, and marketplace discussions tailored to Koreans in Australia.",
-    overview:
-      "Built with a focus on trust, moderation, and scalable community workflows.",
+    overview: "Built with a focus on trust, moderation, and scalable community workflows.",
     date: "01 Jun 2025",
     category: "Team Projects",
     image: "/projects/au-korean-community/main.png",
@@ -603,14 +554,7 @@ export const projects: ProjectDetail[] = [
       "Assignment, task, and personal todo tracking",
       "Offline-first storage with local SQLite database",
     ],
-    techStack: [
-      "C#",
-      ".NET 8",
-      "Windows Forms",
-      "SQLite",
-      "Dapper",
-      "Entity Framework Core 8",
-    ],
+    techStack: ["C#", ".NET 8", "Windows Forms", "SQLite", "Dapper", "Entity Framework Core 8"],
     apis: ["SQLite (local file)", "Dapper", "EF Core"],
     challenges: [
       "Designing a hybrid data access strategy (Dapper + EF Core)",
