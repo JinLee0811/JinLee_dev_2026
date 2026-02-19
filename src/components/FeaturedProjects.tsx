@@ -3,7 +3,9 @@ import { motion } from "motion/react";
 import { ExternalLink, Github, ArrowUpRight, ArrowRight, Star } from "lucide-react";
 import { projects } from "@/data/projects";
 
-const featuredProjects = projects;
+const featuredProjects = [...projects].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+);
 
 interface FeaturedProjectsProps {
   onViewAll: () => void;

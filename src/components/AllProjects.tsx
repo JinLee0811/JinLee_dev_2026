@@ -12,6 +12,9 @@ const categories = [
 export function AllProjects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const sortedProjects = [...projects].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
   const formatMonthYear = (date: string) => {
     const parts = date.split(" ");
     if (parts.length >= 3) {
@@ -20,7 +23,7 @@ export function AllProjects() {
     return date;
   };
 
-  const filteredProjects = projects.filter((project) => {
+  const filteredProjects = sortedProjects.filter((project) => {
     const matchesCategory =
       selectedCategory === "All" || project.category === selectedCategory;
     const matchesSearch =
