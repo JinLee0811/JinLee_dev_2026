@@ -3,9 +3,15 @@ import { motion } from "motion/react";
 import { ExternalLink, Github, ArrowUpRight, ArrowRight, Star } from "lucide-react";
 import { projects } from "@/data/projects";
 
-const featuredProjects = [...projects].sort(
-  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-);
+const selectedProjectSlugs = [
+  "before-you-go",
+  "smart-farm-monitoring",
+  "ai-crop-doctor",
+] as const;
+
+const featuredProjects = selectedProjectSlugs
+  .map((slug) => projects.find((project) => project.slug === slug))
+  .filter((project): project is NonNullable<typeof project> => Boolean(project));
 
 interface FeaturedProjectsProps {
   onViewAll: () => void;
@@ -38,13 +44,13 @@ export function FeaturedProjects({ onViewAll }: FeaturedProjectsProps) {
           >
             <Star className="w-3.5 h-3.5 md:w-4 md:h-4 text-purple-400 fill-purple-400" />
             <span className="text-xs md:text-sm text-purple-300 font-semibold">
-              FEATURED PROJECTS
+              SELECTED PROJECTS
             </span>
           </motion.div>
 
           <h2 className="text-3xl md:text-6xl font-bold mb-4 md:mb-6">
             <span className="bg-linear-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
-              Featured Work
+              Selected Work
             </span>
           </h2>
           <p className="text-base md:text-xl text-slate-400 max-w-2xl mx-auto">
