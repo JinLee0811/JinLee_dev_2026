@@ -21,18 +21,21 @@ I care a lot about performance, clarity, and real user impact, and I like workin
 
 ## Experience
 
-- Software Engineer / Mentor — Elice (Remote / Korea)
-  - Maintained and extended production web applications built with React, TypeScript, and Node.js.
-  - Focused on improving system stability, backward compatibility, and long‑term maintainability.
-  - Investigated and resolved production issues by analysing logs, APIs, and frontend–backend data flows.
-  - Collaborated through GitHub pull requests, code reviews, and incremental deployments.
-  - Contributed to reliability improvements through small refactors and internal documentation.
+- Software Engineer (Full-stack Developer) — TPZ, Seoul (Hybrid) (Dec 2022 – Nov 2023)
+  - Worked as a full-stack developer with balanced ownership: 50% frontend and 50% backend.
+  - Built and maintained web product features across UI, APIs, and end-to-end data flows.
+  - Delivered production-ready functionality through iterative implementation and release cycles.
 
-- Senior Video Producer — Youniv, Seoul (Jan 2020 – Jul 2022)
-  - Led a content team that grew a YouTube channel from 100K to over 700K subscribers.
-  - Applied data‑driven storytelling and audience analytics to optimise content performance.
-  - Worked closely with cross‑functional partners to plan, produce, and ship high‑impact videos.
-  - This experience with data, systems, and iterative improvement naturally led me to pursue software development after Youniv, where I now apply the same mindset to building products instead of videos.
+- Frontend Developer — Youniv, Seoul (Jan 2021 – Jul 2022)
+  - Spearheaded the migration from legacy Vanilla JS to React.
+  - Improved component reusability by 60% and increased development velocity.
+  - Helped establish a maintainable frontend structure for continuous feature development.
+
+- Web Designer & Content Producer — Youniv, Seoul (Jan 2020 – Jan 2021)
+  - Designed high-fidelity wireframes and interactive prototypes with Figma and Adobe CC.
+  - Established a design-to-code workflow that significantly reduced engineering friction.
+  - Led the initial launch build of company web assets, from visual identity to domain and initial cloud setup.
+  - Optimized 4K and high-resolution media assets for web delivery, balancing quality, loading speed, and storage cost.
 
 ## Projects
 
