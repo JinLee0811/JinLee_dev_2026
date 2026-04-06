@@ -21,21 +21,23 @@ I care a lot about performance, clarity, and real user impact, and I like workin
 
 ## Experience
 
-- Software Engineer (Full-stack Developer) — TPZ, Seoul (Hybrid) (Dec 2022 – Nov 2023)
+- Software Engineer — TPZ | Seoul, South Korea (Dec 2022 – Nov 2023)
   - Worked as a full-stack developer with balanced ownership: 50% frontend and 50% backend.
-  - Built and maintained web product features across UI, APIs, and end-to-end data flows.
-  - Delivered production-ready functionality through iterative implementation and release cycles.
+  - Led backend and API engineering with Node.js, from planning to production deployment.
+  - Designed relational database schemas for reliable, high-performance data retrieval.
+  - Implemented secure payment gateway integration with transaction and reconciliation handling.
+  - Owned QA and monitoring standards with structured testing and AWS CloudWatch.
 
-- Frontend Developer — Youniv, Seoul (Jan 2021 – Jul 2022)
-  - Spearheaded the migration from legacy Vanilla JS to React.
-  - Improved component reusability by 60% and increased development velocity.
-  - Helped establish a maintainable frontend structure for continuous feature development.
+- Frontend Developer — YOUNIV | Seoul, South Korea (Jan 2021 – Jul 2022)
+  - Led migration of the core web codebase from Vanilla JS to React with modular components.
+  - Improved component reusability by 60% and accelerated development velocity.
+  - Established modern styling patterns for responsive, high-performance UI.
+  - Built an internal reservation system for studio/equipment workflow automation.
+  - Supported A/B testing and data-driven UI optimization tied to subscriber growth.
 
-- Web Designer & Content Producer — Youniv, Seoul (Jan 2020 – Jan 2021)
-  - Designed high-fidelity wireframes and interactive prototypes with Figma and Adobe CC.
-  - Established a design-to-code workflow that significantly reduced engineering friction.
-  - Led the initial launch build of company web assets, from visual identity to domain and initial cloud setup.
-  - Optimized 4K and high-resolution media assets for web delivery, balancing quality, loading speed, and storage cost.
+- Web Designer & Content Producer — YOUNIV | Seoul, South Korea (Jan 2020 – Jan 2021)
+  - Developed high-fidelity wireframes/prototypes with Figma and improved design-to-code handoff quality.
+  - Managed end-to-end launch of web assets including visual identity, domain strategy, and initial cloud setup.
 
 ## Projects
 

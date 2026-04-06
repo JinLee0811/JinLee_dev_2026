@@ -19,18 +19,6 @@ export type ProjectDetail = {
   takeaways: string[];
 };
 
-const imageSet = {
-  product:
-    "https://images.unsplash.com/photo-1694599048261-a1de00f0117e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-  data: "https://images.unsplash.com/photo-1605108222700-0d605d9ebafe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-  dashboard:
-    "https://images.unsplash.com/photo-1649451844931-57e22fc82de3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-  system:
-    "https://images.unsplash.com/photo-1588690154757-badf4644190f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-  portfolio:
-    "https://images.unsplash.com/photo-1595234235838-2fc8984bc651?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-};
-
 export const projects: ProjectDetail[] = [
   {
     id: 1,
@@ -86,9 +74,9 @@ export const projects: ProjectDetail[] = [
     image: "/projects/smart-farm-monitoring/cover.png",
     galleryImages: [
       "/projects/smart-farm-monitoring/cover.png",
-      "/projects/smart-farm-monitoring/Screenshot 2026-02-10 at 8.46.42 PM.png",
-      "/projects/smart-farm-monitoring/Screenshot 2026-02-10 at 8.46.52 PM.png",
-      "/projects/smart-farm-monitoring/Screenshot 2026-02-10 at 8.47.11 PM.png",
+      "/projects/smart-farm-monitoring/Screenshot 2026-02-10 at 8.46.42\u202fPM.png",
+      "/projects/smart-farm-monitoring/Screenshot 2026-02-10 at 8.46.52\u202fPM.png",
+      "/projects/smart-farm-monitoring/Screenshot 2026-02-10 at 8.47.11\u202fPM.png",
     ],
     tags: ["React", "TypeScript", "Node.js", "Python", "YOLOv8", "OpenCV", "MongoDB"],
     liveUrl: "https://www.canva.com/design/DAHAtsAZpic/q2x8lIIOW1ayPc_cwyxqwA/edit",
@@ -123,7 +111,15 @@ export const projects: ProjectDetail[] = [
       "The AI module uses MobileNetV2 (pretrained on ImageNet, fine-tuned for 20 plant disease categories) trained with TensorFlow. Weighted cross-entropy and data augmentation address class imbalance. The trained model is served via a FastAPI inference endpoint deployed on AWS. The NestJS backend handles JWT authentication (access + refresh tokens) and MySQL data management. The React frontend uses React Query and Jotai for state management, with Styled-components for scoped styling.",
     date: "01 Apr 2023",
     category: "Team Projects",
-    image: imageSet.portfolio,
+    image: "/images/cropDocter/2.main.gif",
+    galleryImages: [
+      "/images/cropDocter/2.main.gif",
+      "/images/cropDocter/1. login.gif",
+      "/images/cropDocter/3.User.gif",
+      "/images/cropDocter/7.Board.gif",
+      "/images/cropDocter/8.Board and Comment.gif",
+      "/images/cropDocter/9.Likes and Write.gif",
+    ],
     tags: ["React", "Styled-components", "React Query", "Jotai", "NestJS", "MySQL", "TensorFlow", "FastAPI", "AWS"],
     githubUrl: "https://github.com/JinLee0811/cropdoctor-frontend",
     features: [
@@ -148,15 +144,21 @@ export const projects: ProjectDetail[] = [
   {
     id: 5,
     slug: "first-react-portfolio",
-    title: "First React Portfolio",
-    subtitle: "React + Styled-components Portfolio",
+    title: "portfolio(2023)",
+    subtitle: "React, Styled-components, GitHub Pages",
     description:
       "My first portfolio website built with React component architecture and Styled-components, deployed via GitHub Pages.",
     overview:
       "Built to learn React fundamentals — component composition, props, and state management — while producing a functional portfolio. Styled-components was used for scoped CSS and theming. Deployed using gh-pages with npm run deploy.",
     date: "01 Feb 2023",
     category: "Personal",
-    image: imageSet.portfolio,
+    image: "/images/firstPortfolio/FirstPortfolio.png",
+    galleryImages: [
+      "/images/firstPortfolio/FirstPortfolio.png",
+      "/images/firstPortfolio/Firstportfolio.detail.png",
+      "/images/firstPortfolio/ProjectList.png",
+      "/images/firstPortfolio/SkillList.png",
+    ],
     tags: ["React", "JavaScript", "Styled-components", "CSS3"],
     liveUrl: "https://jinlee0811.github.io/portfolio/",
     githubUrl: "https://github.com/JinLee0811/portfolio",
@@ -228,7 +230,15 @@ export const projects: ProjectDetail[] = [
       "Built as part of the Elice AI Full-Stack Engineer Track (6th cohort). Won the Award of Excellence (Ministry of Employment and Labour) and the Team Leadership Award. The core algorithm computes perceivedTime = travelTime × congestionWeight across the Seoul subway graph using Dijkstra's shortest path. Data was processed in Google Colab, served via a Node.js + Express + Prisma backend on AWS RDS (MySQL), and visualised on a Naver Maps canvas with Chart.js overlays. Kakao OAuth and JWT cookie-based auth were implemented for user flows.",
     date: "01 Mar 2023",
     category: "Team Projects",
-    image: imageSet.data,
+    image: "/images/dataProject/main.gif",
+    galleryImages: [
+      "/images/dataProject/main.gif",
+      "/images/dataProject/search.gif",
+      "/images/dataProject/mypage.gif",
+      "/images/dataProject/info.gif",
+      "/images/dataProject/Admin.gif",
+      "/images/dataProject/prize.png",
+    ],
     tags: ["React", "Styled-components", "Node.js", "Express", "Prisma", "MySQL", "Naver Maps", "Chart.js", "AWS"],
     githubUrl: "https://github.com/JinLee0811/2-_MoveWithTrain_WebDataService",
     features: [
@@ -287,8 +297,8 @@ export const projects: ProjectDetail[] = [
   {
     id: 10,
     slug: "jin-dev-portfolio-2",
-    title: "Jin.Dev Portfolio 2.0",
-    subtitle: "Next.js Portfolio with Framer Motion",
+    title: "portfolio(2024)",
+    subtitle: "Next.js, Tailwind CSS, Framer Motion",
     description:
       "A modern portfolio site with scroll-triggered Framer Motion animations, Next.js Image optimisation, and responsive Tailwind CSS layouts.",
     overview:
@@ -298,9 +308,9 @@ export const projects: ProjectDetail[] = [
     image: "/projects/second-react-portfolio/portfolio.png",
     galleryImages: [
       "/projects/second-react-portfolio/portfolio.png",
-      "/projects/second-react-portfolio/Screenshot 2025-04-19 at 6.05.14 PM.png",
-      "/projects/second-react-portfolio/Screenshot 2025-04-19 at 6.05.46 PM.png",
-      "/projects/second-react-portfolio/Screenshot 2025-04-19 at 6.06.58 PM.png",
+      "/projects/second-react-portfolio/Screenshot 2025-04-19 at 6.05.14\u202fPM.png",
+      "/projects/second-react-portfolio/Screenshot 2025-04-19 at 6.05.46\u202fPM.png",
+      "/projects/second-react-portfolio/Screenshot 2025-04-19 at 6.06.58\u202fPM.png",
     ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://jin-lee-portfolio.vercel.app/",
@@ -504,8 +514,8 @@ export const projects: ProjectDetail[] = [
   {
     id: 16,
     slug: "jin-dev-portfolio-2025",
-    title: "Jin.Dev Portfolio 2025",
-    subtitle: "Portfolio with Gemini AI Chatbot",
+    title: "portfolio(2025)",
+    subtitle: "Next.js App Router, Gemini AI chatbot",
     description:
       "A portfolio website featuring an embedded AI chatbot powered by Google Gemini API, delivering context-aware responses about projects, tech stack, and experience through a clean conversational UI.",
     overview:
